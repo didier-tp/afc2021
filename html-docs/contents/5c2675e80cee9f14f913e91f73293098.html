@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>inscrire abonné</title>
+    <title></title>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="../assets/css/bootstrap.css">
 <link rel="stylesheet" href="../assets/css/jquery.bonsai.css">
@@ -18,14 +18,14 @@
 
       <!-- Name Title -->
 
-      <h1>inscrire abonné</h1>
+      <h1>(unnamed)</h1>
 
       <!-- Type and Stereotype -->
 
       <section style="margin-top: .5em;">
         <span class="alert alert-info">
-          <span class="node-icon staruml-icon icon-UMLUseCase"></span>
-          UMLUseCase
+          <span class="node-icon staruml-icon icon-UMLControlFlow"></span>
+          UMLControlFlow
         </span>
         
       </section>
@@ -43,7 +43,13 @@
           <span class="label label-info"><a href='b12de7d85b4dba6f67a4db74973b922c.html'><span class='node-icon staruml-icon icon-UMLModel'></span>ModelUseCase</a></span>
         
           <span>::</span>
-          <span class="label label-info"><a href='80a949b844271b206e3f32548e78f4e9.html'><span class='node-icon staruml-icon icon-UMLUseCase'></span>inscrire abonné</a></span>
+          <span class="label label-info"><a href='a24081cf2a857b30f81bb45e06689ff8.html'><span class='node-icon staruml-icon icon-UMLUseCase'></span>enregistrer début emprunt</a></span>
+        
+          <span>::</span>
+          <span class="label label-info"><a href='26927e4dd5a615cea41ee94b75c38cef.html'><span class='node-icon staruml-icon icon-UMLActivity'></span>Activity1</a></span>
+        
+          <span>::</span>
+          <span class="label label-info"><a href='5c2675e80cee9f14f913e91f73293098.html'><span class='node-icon staruml-icon icon-UMLControlFlow'></span>(renseigner numéro exemplaire à emprunter→enregistrer détails de l&#39;emprunt)</a></span>
         
       </section>
 
@@ -58,9 +64,7 @@
         <h3>Description</h3>
         <div>
           
-            <h2>scénario nominal:</h2>
-
-<ol><li>vérifier si nouvelle inscription ou pas</li><li>le responsable abonnement <strong>renseigne infos sur abonné</strong> (nom, prénom, adresse, ...)</li><li>percevoir paiement si abonnement payant</li><li>le responsable abonnement déclenche <strong>enregistrement des  infos sur l&#39;abonné</strong> et générer nouveau numéro abonné.</li><li><strong>imprimer carte d&#39;abonné</strong>  et afficher résumé sur opérations effectuées</li></ol>
+            <span class="label label-info">none</span>
           
         </div>
       </section>
@@ -73,32 +77,31 @@
       <!-- Directed Relationship -->
 
       
+      <section class="element-list">
+        <table width="100%">
+          <tr>
+            <td width="50%">
+              <h3>Source</h3>
+              <ul class="nav nav-list">
+                <li><a href='946347e32f4c96f91258983f8fc60567.html'><span class='node-icon staruml-icon icon-UMLAction'></span>renseigner numéro exemplaire à emprunter</a></a></li>
+              </ul>
+            </td>
+            <td width="50%">
+              <h3>Target</h3>
+              <ul class="nav nav-list">
+                <li><a href='efe53357b97a65078080f5f75260ba8a.html'><span class='node-icon staruml-icon icon-UMLAction'></span>enregistrer détails de l&#39;emprunt</a></a></li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </section>
+      
 
       <!-- Undirected Relationship -->
 
       
 
       <!-- Classifier -->
-
-      
-        
-        
-
-
-        
-        
-
-
-        
-        
-
-
-        
-        
-
-
-        
-        
 
       
 
@@ -119,27 +122,6 @@
       
 
       <!-- Use Case -->
-
-      
-        
-        
-<section class="element-list">
-    <h3>Actors</h3>
-    <ul class="nav nav-list">
-        
-        <li><a href='a2de3baec2a73f61cc190235d62e4595.html'><span class='node-icon staruml-icon icon-UMLActor'></span>Responsable abonnement</a></li>
-        
-    </ul>
-</section>
-
-
-
-        
-        
-
-
-        
-        
 
       
 
@@ -255,7 +237,7 @@
     
     <tr>
         <td>name</td>
-        <td>inscrire abonné</td>
+        <td></td>
     </tr>
     
     
@@ -263,6 +245,24 @@
     
     
     
+    
+    
+    
+    
+    
+    <tr>
+        <td>source</td>
+        <td><a href='946347e32f4c96f91258983f8fc60567.html'><span class='node-icon staruml-icon icon-UMLAction'></span>renseigner numéro exemplaire à emprunter</a></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>target</td>
+        <td><a href='efe53357b97a65078080f5f75260ba8a.html'><span class='node-icon staruml-icon icon-UMLAction'></span>enregistrer détails de l&#39;emprunt</a></td>
+    </tr>
     
     
     
@@ -286,19 +286,9 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <tr>
-        <td>isAbstract</td>
-        <td><span class='label label-info'>false</span></td>
+        <td>guard</td>
+        <td></td>
     </tr>
     
     
@@ -306,28 +296,8 @@
     
     
     <tr>
-        <td>isFinalSpecialization</td>
-        <td><span class='label label-info'>false</span></td>
-    </tr>
-    
-    
-    
-    
-    
-    <tr>
-        <td>isLeaf</td>
-        <td><span class='label label-info'>false</span></td>
-    </tr>
-    
-    
-    
-    
-    
-    <tr>
-        <td>extensionPoints</td>
-        <td>
-            
-        </td>
+        <td>weight</td>
+        <td></td>
     </tr>
     
     
@@ -343,32 +313,11 @@
       <!-- Constraints, Dependencies, Dependants -->
 
       
-        
-        
-
-
-        
-        
-
-
-        
-        
-
-      
 
       <!-- Relationships -->
 
       
       
-<section class="element-list">
-    <h3>Relationships</h3>
-    <ul class="nav nav-list">
-        
-        <li><a href='f958611f8c5c6a455a86def9ec3a399a.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Responsable abonnement—inscrire abonné)</a></li>
-        
-    </ul>
-</section>
-
 
 
       <!-- Owned Elements -->
