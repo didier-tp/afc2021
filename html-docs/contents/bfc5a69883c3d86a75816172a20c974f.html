@@ -28,6 +28,8 @@
           UMLClass
         </span>
         
+          <span style="margin-left: 10px" class="alert alert-info">«entity»</span>
+        
       </section>
 
       <!-- Path -->
@@ -46,7 +48,7 @@
           <span class="label label-info"><a href='f8f01f39d949314ab4bd19c25f5a8a6c.html'><span class='node-icon staruml-icon icon-UMLPackage'></span>emprunts</a></span>
         
           <span>::</span>
-          <span class="label label-info"><a href='bfc5a69883c3d86a75816172a20c974f.html'><span class='node-icon staruml-icon icon-UMLClass'></span>Emprunt</a></span>
+          <span class="label label-info"><a href='bfc5a69883c3d86a75816172a20c974f.html'><span class='node-icon staruml-icon icon-UMLClass'></span>«entity»Emprunt</a></span>
         
       </section>
 
@@ -147,21 +149,21 @@
           <tr>
             <td>public</td>
             <td><a href="18c2bb447406986d74376b011c47700a.html">numero</a></td>
-            <td><span class='label label-info'>none</span></td>
+            <td>integer</td>
             <td></td>
           </tr>
           
           <tr>
             <td>public</td>
             <td><a href="fc977d0a61cc8e86a83df7c77a2842b5.html">date_debut</a></td>
-            <td><span class='label label-info'>none</span></td>
+            <td>Date</td>
             <td></td>
           </tr>
           
           <tr>
             <td>public</td>
             <td><a href="091a3b765ddfe176cd2032bdb23a908d.html">date_fin</a></td>
-            <td><span class='label label-info'>none</span></td>
+            <td>Date</td>
             <td></td>
           </tr>
           
@@ -284,7 +286,7 @@
     
     <tr>
         <td>stereotype</td>
-        <td><span class='label label-info'>null</span></td>
+        <td>entity</td>
     </tr>
     
     
@@ -365,6 +367,15 @@
 
         
         
+<section class="element-list">
+    <h3>Dependants</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='5e11bf3afe12625f71f14f9b7f0e50ef.html'><span class='node-icon staruml-icon icon-UMLClass'></span>«service,transactional»ServiceEmprunt</a></li>
+        
+    </ul>
+</section>
+
 
       
 
@@ -381,6 +392,8 @@
         <li><a href='08f053579eb052031899ba2a9dee02f8.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Emprunt—Abonné)</a></li>
         
         <li><a href='09e715dc210443fa19e58c77e0b723de.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Emprunt—Contentieux)</a></li>
+        
+        <li><a href='79b90d09e58c3ada7c8e17b4048bb418.html'><span class='node-icon staruml-icon icon-UMLDependency'></span>(ServiceEmprunt→Emprunt)</a></li>
         
     </ul>
 </section>

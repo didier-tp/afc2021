@@ -86,7 +86,7 @@
                                             <div style="display: inline-block; white-space: nowrap">
     <span class="node-icon staruml-icon icon-UMLClass"></span>
     
-        <a href="e21fc37382d139dee6873f1e32bb9798.html" target="content" style="white-space: nowrap;">Exemplaire</a>
+        <a href="e21fc37382d139dee6873f1e32bb9798.html" target="content" style="white-space: nowrap;">«entity»Exemplaire</a>
     
 </div>
                                             
@@ -134,7 +134,7 @@
                                             <div style="display: inline-block; white-space: nowrap">
     <span class="node-icon staruml-icon icon-UMLClass"></span>
     
-        <a href="4fd3bea9f8800b66856d5cf5657c6b5a.html" target="content" style="white-space: nowrap;">Oeuvre</a>
+        <a href="4fd3bea9f8800b66856d5cf5657c6b5a.html" target="content" style="white-space: nowrap;">«entity»Oeuvre</a>
     
 </div>
                                             
@@ -218,6 +218,69 @@
                                                         </li>
                                                         
                                                     </ol>
+                                                    
+                                                </li>
+                                                
+                                            </ol>
+                                            
+                                        </li>
+                                        
+                                        
+                                        <li>
+                                            <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLClass"></span>
+    
+        <a href="5a03946cdd53c8a85ad53be98529720e.html" target="content" style="white-space: nowrap;">«service»ServiceLivre</a>
+    
+</div>
+                                            
+                                            <ol>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLOperation"></span>
+    
+        <a href="9e2ad2ba3a51a2eb73d82592b44ea6aa.html" target="content" style="white-space: nowrap;">findExemplaireById</a>
+    
+</div>
+                                                    
+                                                    <ol>
+                                                        
+                                                        
+                                                        <li>
+                                                            <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLParameter"></span>
+    
+        <a href="892fdab0084b186cafe3b83918a56235.html" target="content" style="white-space: nowrap;">(Parameter)</a>
+    
+</div>
+                                                            
+                                                        </li>
+                                                        
+                                                    </ol>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLOperation"></span>
+    
+        <a href="f9e8de3f91fe2a45afc1ed48d99d0313.html" target="content" style="white-space: nowrap;">ajouterExemplaire</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLDependency"></span>
+    
+        <a href="148a5feb9508a22af54f4f3f2c8efc8d.html" target="content" style="white-space: nowrap;">(ServiceLivre→Exemplaire)</a>
+    
+</div>
                                                     
                                                 </li>
                                                 
@@ -352,7 +415,7 @@
                                             <div style="display: inline-block; white-space: nowrap">
     <span class="node-icon staruml-icon icon-UMLClass"></span>
     
-        <a href="ef7137cbaeed13ce5e9af4d8c08717e5.html" target="content" style="white-space: nowrap;">Abonné</a>
+        <a href="ef7137cbaeed13ce5e9af4d8c08717e5.html" target="content" style="white-space: nowrap;">«entity»Abonné</a>
     
 </div>
                                             
@@ -550,6 +613,54 @@
                                             
                                         </li>
                                         
+                                        
+                                        <li>
+                                            <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLClass"></span>
+    
+        <a href="2f0bdf54bede398fb2bcbaba728fecae.html" target="content" style="white-space: nowrap;">«service»ServiceAbonné</a>
+    
+</div>
+                                            
+                                            <ol>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLOperation"></span>
+    
+        <a href="df1070fbccd8bcd22e356c8e2933dba3.html" target="content" style="white-space: nowrap;">rechercherAbonnéParNumero</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLOperation"></span>
+    
+        <a href="a84dbead14f4e9bd0976ba9d20f3de6a.html" target="content" style="white-space: nowrap;">verifierValiditeAbonnement</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLDependency"></span>
+    
+        <a href="d42271541b0637deb619bb8f83750a80.html" target="content" style="white-space: nowrap;">(ServiceAbonné→Abonné)</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                            </ol>
+                                            
+                                        </li>
+                                        
                                     </ol>
                                     
                                 </li>
@@ -581,7 +692,7 @@
                                             <div style="display: inline-block; white-space: nowrap">
     <span class="node-icon staruml-icon icon-UMLClass"></span>
     
-        <a href="bfc5a69883c3d86a75816172a20c974f.html" target="content" style="white-space: nowrap;">Emprunt</a>
+        <a href="bfc5a69883c3d86a75816172a20c974f.html" target="content" style="white-space: nowrap;">«entity»Emprunt</a>
     
 </div>
                                             
@@ -740,7 +851,7 @@
                                             <div style="display: inline-block; white-space: nowrap">
     <span class="node-icon staruml-icon icon-UMLClass"></span>
     
-        <a href="8cc003c0630010165e274f046b131f59.html" target="content" style="white-space: nowrap;">Contentieux</a>
+        <a href="8cc003c0630010165e274f046b131f59.html" target="content" style="white-space: nowrap;">«entity»Contentieux</a>
     
 </div>
                                             
@@ -774,6 +885,32 @@
     <span class="node-icon staruml-icon icon-UMLAttribute"></span>
     
         <a href="41d233f1cede90cb6650f725ac953133.html" target="content" style="white-space: nowrap;">regle</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                            </ol>
+                                            
+                                        </li>
+                                        
+                                        
+                                        <li>
+                                            <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLClass"></span>
+    
+        <a href="5e11bf3afe12625f71f14f9b7f0e50ef.html" target="content" style="white-space: nowrap;">«service,transactional»ServiceEmprunt</a>
+    
+</div>
+                                            
+                                            <ol>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLDependency"></span>
+    
+        <a href="79b90d09e58c3ada7c8e17b4048bb418.html" target="content" style="white-space: nowrap;">(ServiceEmprunt→Emprunt)</a>
     
 </div>
                                                     
@@ -1266,6 +1403,179 @@
         <a href="0e896d249b55f3057c906b16e7b8036c.html" target="content" style="white-space: nowrap;">identifier emprunteur</a>
     
 </div>
+                                    
+                                    <ol>
+                                        
+                                        
+                                        <li>
+                                            <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLAttribute"></span>
+    
+        <a href="2d094d25c96f8edd305bbbe3130c5abe.html" target="content" style="white-space: nowrap;">Role1</a>
+    
+</div>
+                                            
+                                        </li>
+                                        
+                                        
+                                        <li>
+                                            <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLAttribute"></span>
+    
+        <a href="7081bf505ee35a985b2df7e7c6302efb.html" target="content" style="white-space: nowrap;">Role2</a>
+    
+</div>
+                                            
+                                        </li>
+                                        
+                                        
+                                        <li>
+                                            <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLAttribute"></span>
+    
+        <a href="bfb765deb0a43f89ebad5f6b223f1971.html" target="content" style="white-space: nowrap;">Role3</a>
+    
+</div>
+                                            
+                                        </li>
+                                        
+                                        
+                                        <li>
+                                            <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLInteraction"></span>
+    
+        <a href="95b4250b9854266772cb8ce97ec4fcd6.html" target="content" style="white-space: nowrap;">Interaction1</a>
+    
+</div>
+                                            
+                                            <ol>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLSequenceDiagram"></span>
+    
+        <a href="ca90e8ddd07e0dc49b37e77a464a2f0d.html" target="content" style="white-space: nowrap;">SequenceDiagramIdentifierEmprunteur</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLLifeline"></span>
+    
+        <a href="45d4a80c79b154530853057d905930e3.html" target="content" style="white-space: nowrap;">b: Bibliothecaire</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLLifeline"></span>
+    
+        <a href="64ac14b16b861fda2941594198ea2abf.html" target="content" style="white-space: nowrap;">IHM</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLLifeline"></span>
+    
+        <a href="895e79eb405c6b921321d6d1479bb976.html" target="content" style="white-space: nowrap;">sa: ServiceAbonné</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLMessage"></span>
+    
+        <a href="578e983250d4a10a6536a2286e036741.html" target="content" style="white-space: nowrap;">renseigner (b→IHM)</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLMessage"></span>
+    
+        <a href="47ed46f731689ffd237f583e904003b3.html" target="content" style="white-space: nowrap;">déclencher_recherche (b→IHM)</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLMessage"></span>
+    
+        <a href="bad8e7f4fc2a90ebc5702cb5778733e1.html" target="content" style="white-space: nowrap;">Message1 (IHM→sa)</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLMessage"></span>
+    
+        <a href="a6d497086e85df4573985495bbe688b7.html" target="content" style="white-space: nowrap;">abonné (sa→IHM)</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLMessage"></span>
+    
+        <a href="795172046666d3e1be0dff438e3273f8.html" target="content" style="white-space: nowrap;">Message2 (IHM→sa)</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLMessage"></span>
+    
+        <a href="169d0f5f40a2cc686effc66a565e8263.html" target="content" style="white-space: nowrap;">true or false (sa→IHM)</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                                
+                                                <li>
+                                                    <div style="display: inline-block; white-space: nowrap">
+    <span class="node-icon staruml-icon icon-UMLMessage"></span>
+    
+        <a href="221470f89e8d42d785da8b0874a6f60a.html" target="content" style="white-space: nowrap;">afficher infos abonné ou exception (IHM→IHM)</a>
+    
+</div>
+                                                    
+                                                </li>
+                                                
+                                            </ol>
+                                            
+                                        </li>
+                                        
+                                    </ol>
                                     
                                 </li>
                                 
