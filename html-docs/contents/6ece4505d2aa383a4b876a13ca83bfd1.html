@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Model</title>
+    <title>exemp_emprunté</title>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="../assets/css/bootstrap.css">
 <link rel="stylesheet" href="../assets/css/jquery.bonsai.css">
@@ -18,14 +18,14 @@
 
       <!-- Name Title -->
 
-      <h1>Model</h1>
+      <h1>exemp_emprunté</h1>
 
       <!-- Type and Stereotype -->
 
       <section style="margin-top: .5em;">
         <span class="alert alert-info">
-          <span class="node-icon staruml-icon icon-UMLModel"></span>
-          UMLModel
+          <span class="node-icon staruml-icon icon-UMLAssociationEnd"></span>
+          UMLAssociationEnd
         </span>
         
       </section>
@@ -41,6 +41,18 @@
         
           <span>::</span>
           <span class="label label-info"><a href='594af663de577680f35b13183109d675.html'><span class='node-icon staruml-icon icon-UMLModel'></span>Model</a></span>
+        
+          <span>::</span>
+          <span class="label label-info"><a href='f8f01f39d949314ab4bd19c25f5a8a6c.html'><span class='node-icon staruml-icon icon-UMLPackage'></span>emprunts</a></span>
+        
+          <span>::</span>
+          <span class="label label-info"><a href='bfc5a69883c3d86a75816172a20c974f.html'><span class='node-icon staruml-icon icon-UMLClass'></span>Emprunt</a></span>
+        
+          <span>::</span>
+          <span class="label label-info"><a href='4ca2b78fad30dc2e8ba11a1989a7ce0b.html'><span class='node-icon staruml-icon icon-UMLAssociation'></span>(Emprunt—Exemplaire)</a></span>
+        
+          <span>::</span>
+          <span class="label label-info"><a href='6ece4505d2aa383a4b876a13ca83bfd1.html'><span class='node-icon staruml-icon icon-UMLAssociationEnd'></span>exemp_emprunté</a></span>
         
       </section>
 
@@ -129,22 +141,6 @@
 
       
       
-      <section class="element-list">
-        <h3>Diagrams</h3>
-        <div>
-          
-          <div style="display: inline-block; width: 250px; vertical-align: top;">
-            <div class="member">
-              <a href="a74bf0e3699da3f8e58beeb19b53e20a.html">
-                <img src="../diagrams/a74bf0e3699da3f8e58beeb19b53e20a.svg">
-                <div style="text-align: center; margin-top: 1em;">MainClassDiagram</div>
-              </a>
-            </div>
-          </div>
-          
-        </div>
-      </section>
-      
 
       <!-- Behavior -->
 
@@ -225,7 +221,7 @@
     
     <tr>
         <td>name</td>
-        <td>Model</td>
+        <td>exemp_emprunté</td>
     </tr>
     
     
@@ -233,6 +229,15 @@
     
     
     
+    
+    
+    
+    
+    
+    <tr>
+        <td>reference</td>
+        <td><a href='e21fc37382d139dee6873f1e32bb9798.html'><span class='node-icon staruml-icon icon-UMLClass'></span>Exemplaire</a></td>
+    </tr>
     
     
     
@@ -256,13 +261,9 @@
     
     
     
-    
-    
     <tr>
-        <td>importedElements</td>
-        <td>
-            
-        </td>
+        <td>navigable</td>
+        <td><span class='label label-info'>true</span></td>
     </tr>
     
     
@@ -270,8 +271,82 @@
     
     
     <tr>
-        <td>viewpoint</td>
+        <td>aggregation</td>
+        <td>none</td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>multiplicity</td>
         <td></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>defaultValue</td>
+        <td></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isReadOnly</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isOrdered</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isUnique</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isDerived</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isID</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>qualifiers</td>
+        <td>
+            
+        </td>
     </tr>
     
     
@@ -287,18 +362,6 @@
       <!-- Constraints, Dependencies, Dependants -->
 
       
-        
-        
-
-
-        
-        
-
-
-        
-        
-
-      
 
       <!-- Relationships -->
 
@@ -310,21 +373,6 @@
 
       
       
-<section class="element-list">
-    <h3>Owned Elements</h3>
-    <ul class="nav nav-list">
-        
-        <li><a href='a74bf0e3699da3f8e58beeb19b53e20a.html'><span class='node-icon staruml-icon icon-UMLClassDiagram'></span>MainClassDiagram</a></li>
-        
-        <li><a href='0f9045c71a9693ce8099f6eac7d8e7c1.html'><span class='node-icon staruml-icon icon-UMLPackage'></span>livres</a></li>
-        
-        <li><a href='e09454e555e09a122e571e05cac39de2.html'><span class='node-icon staruml-icon icon-UMLPackage'></span>personnes</a></li>
-        
-        <li><a href='f8f01f39d949314ab4bd19c25f5a8a6c.html'><span class='node-icon staruml-icon icon-UMLPackage'></span>emprunts</a></li>
-        
-    </ul>
-</section>
-
 
 
     </div>
