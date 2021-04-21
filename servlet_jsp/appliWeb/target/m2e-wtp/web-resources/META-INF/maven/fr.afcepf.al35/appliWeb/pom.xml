@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.afcepf.al35</groupId>
+  <artifactId>appliWeb</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <properties>
+    <failOnMissingWebXml>false</failOnMissingWebXml>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
+  
+  <dependencies>
+  <!--    <dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>4.0.1</version>
+    <scope>provided</scope>
+  </dependency>  -->
+  
+    <dependency>
+	    <groupId>javax</groupId>
+	    <artifactId>javaee-api</artifactId>
+	    <version>7.0</version>
+	    <scope>provided</scope>
+   </dependency>
+  <!-- javaee-api comporte servlet-api + jsp-api + ... -->
+  </dependencies>
+  
+  <build>
+     <finalName>${project.artifactId}</finalName>
+  </build>
+  
+  
+</project>
