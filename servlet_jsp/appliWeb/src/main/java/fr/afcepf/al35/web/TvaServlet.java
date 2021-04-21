@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/TvaServlet")
 public class TvaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private int compteur=0;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -36,11 +38,16 @@ public class TvaServlet extends HttpServlet {
 		Double tva = ht * taux / 100;
 		Double ttc = ht + tva;
 		
+		synchronized(this) {
+		   compteur++;
+		}
+		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
 		out.println("<p>tva="+tva+"</p>");
 		out.println("<p>ttc=<b>"+ttc+"</b></p>");
+		out.println("<p>compteur=<i>"+compteur+"</i></p>");
 		out.println("</body></html>");
 	}
 
