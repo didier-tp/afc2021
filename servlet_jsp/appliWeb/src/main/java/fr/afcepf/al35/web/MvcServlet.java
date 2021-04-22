@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.afcepf.al35.web.model.LoginBean;
 import fr.afcepf.al35.web.model.RechercheBean;
@@ -75,7 +76,10 @@ public class MvcServlet extends HttpServlet {
 		//on ajoute (avant le forward) dans l'objet request une information
 		//qui servira à accéder au bean depuis la page jsp
 		//ex: ${loginBean.message} coté jsp
-		request.setAttribute("loginBean",loginBean);
+		//request.setAttribute("loginBean",loginBean);
+		
+		HttpSession session = request.getSession(); //session de l'utilisateur courant
+		session.setAttribute("loginBean",loginBean);
 		
 		RequestDispatcher rd =
 		    getServletContext().getRequestDispatcher(urlPage);

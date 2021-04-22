@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>login</title>
+<link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
     <form action="MvcServlet" method="POST">
@@ -13,7 +14,7 @@
         password=<input name="password" type="text" value="${loginBean.password}"/><br/>
         <input type="submit" value="login" />
      </form>
-     message : <b>${loginBean.message}</b> <br/>
+     message : <span class="error">${loginBean.message}</span> <br/>
      <%@ include file="piedPage.jsp" %>
 </body>
 </html>
