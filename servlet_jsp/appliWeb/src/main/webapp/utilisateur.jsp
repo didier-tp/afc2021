@@ -7,6 +7,10 @@
 <title>utilisateur</title>
 </head>
 <body>
-    <!-- afficher données sur utilisateur connecté -->
+     message : <b>${loginBean.message}</b> <br/>
+     <h3>utilisateur connecté:</h3>
+     <i>${loginBean.user.username}</i> <br/>
+     <b>${loginBean.user.email}</b> <br/>
+     <%@ include file="piedPage.jsp" %>
 </body>
 </html>

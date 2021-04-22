@@ -7,10 +7,13 @@
 <title>login</title>
 </head>
 <body>
-     <!--  saisir username + password
-          et si valeur incorrecte , affichage d'un message
-          ----
-          tache aura la valeur "login"
-         -->
+    <form action="MvcServlet" method="POST">
+        <input type="hidden" name="tache" value="login" />
+        username=<input name="username" type="text" value="${loginBean.username}" /><br/>
+        password=<input name="password" type="text" value="${loginBean.password}"/><br/>
+        <input type="submit" value="login" />
+     </form>
+     message : <b>${loginBean.message}</b> <br/>
+     <%@ include file="piedPage.jsp" %>
 </body>
 </html>

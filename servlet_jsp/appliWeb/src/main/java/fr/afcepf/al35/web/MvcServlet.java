@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.afcepf.al35.web.model.LoginBean;
 import fr.afcepf.al35.web.model.RechercheBean;
 
 /**
@@ -35,6 +36,9 @@ public class MvcServlet extends HttpServlet {
 		case "rechercheInfosPays":
 			doRechercheInfosPays(request,response);
 			break;
+		case "login":
+			doLogin(request,response);
+			break;
 		}
 	}
 	
@@ -59,10 +63,10 @@ public class MvcServlet extends HttpServlet {
 	}
 	
 	protected void doLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String .. = request.getParameter("....");
 		String urlPage ;
 		LoginBean  loginBean = new LoginBean();
-		loginBean.setUsername(...); ..
+		loginBean.setUsername(request.getParameter("username")); 
+		loginBean.setPassword(request.getParameter("password")); 
 		if(	loginBean.loginUser()) {
 			urlPage = "/utilisateur.jsp";
 		}else {
