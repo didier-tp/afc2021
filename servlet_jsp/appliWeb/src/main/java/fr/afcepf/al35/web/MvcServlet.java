@@ -1,11 +1,15 @@
 package fr.afcepf.al35.web;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import fr.afcepf.al35.web.model.RechercheBean;
 
 /**
  * Servlet implementation class MvcServlet
@@ -26,8 +30,32 @@ public class MvcServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String tache = request.getParameter("tache");
+		switch(tache) {
+		case "rechercheInfosPays":
+			doRechercheInfosPays(request,response);
+			break;
+		}
+	}
+	
+	protected void doRechercheInfosPays(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String nomPays = request.getParameter("nomPays");
+		String urlPage = "/recherche.jsp";
+		RechercheBean  recherchePays = new RechercheBean();
+		recherchePays.setNomPays(nomPays);
+		if(recherchePays.rechercherPays()) {
+			//...
+		}else {
+			//...
+		}
+		//on ajoute (avant le forward) dans l'objet request une information
+		//qui servira à accéder au bean depuis la page jsp
+		//ex: ${rechercheBean.message} coté jsp
+		request.setAttribute("rechercheBean",recherchePays);
+		
+		RequestDispatcher rd =
+		    getServletContext().getRequestDispatcher(urlPage);
+		rd.forward(request,response);//redirection du servlet vers page JSP
 	}
 
 	/**
