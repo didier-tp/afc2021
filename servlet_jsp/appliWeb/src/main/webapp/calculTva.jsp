@@ -15,6 +15,10 @@ if(sHt!=null && sTaux!=null){
 	Double taux = Double.parseDouble(sTaux);
 	tva = ht * taux / 100;
 	ttc = ht + tva;
+}else{
+	//valeur par defaut:
+	sHt="200";
+	sTaux="0";
 }
 %>
 <body>
@@ -26,5 +30,6 @@ if(sHt!=null && sTaux!=null){
     </form>
     tva=<%=tva%> <br/>
     ttc=<b><%=ttc%></b> <br/>
+    <%@ include file="piedPage.jsp" %>
 </body>
 </html>
