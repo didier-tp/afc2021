@@ -12,7 +12,18 @@
         nomPays=<input name="nomPays" type="text" /><br/>
         <input type="submit" value="rechercher infos sur pays" />
      </form>
+     <!--  
+     <%
+     fr.afcepf.al35.web.model.RechercheBean rechercheB = 
+         (fr.afcepf.al35.web.model.RechercheBean) 
+                 request.getAttribute("rechercheBean");
+     %>
+     <%if(rechercheB!=null) {%>
+     message : <i><%=rechercheB.getMessage()%></i> <br/>
+     <%}%>
+     -->
      message : <b>${rechercheBean.message}</b> <br/>
-     population du pays : <b>${rechercheBean.pays.population}</b>
+     population du pays : <b>${rechercheBean.pays.population}</b><br/>
+     <%@ include file="piedPage.jsp" %>
 </body>
 </html>

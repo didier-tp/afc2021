@@ -57,6 +57,26 @@ public class MvcServlet extends HttpServlet {
 		    getServletContext().getRequestDispatcher(urlPage);
 		rd.forward(request,response);//redirection du servlet vers page JSP
 	}
+	
+	protected void doLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String .. = request.getParameter("....");
+		String urlPage ;
+		LoginBean  loginBean = new LoginBean();
+		loginBean.setUsername(...); ..
+		if(	loginBean.loginUser()) {
+			urlPage = "/utilisateur.jsp";
+		}else {
+			urlPage = "/login.jsp";
+		}
+		//on ajoute (avant le forward) dans l'objet request une information
+		//qui servira à accéder au bean depuis la page jsp
+		//ex: ${loginBean.message} coté jsp
+		request.setAttribute("loginBean",loginBean);
+		
+		RequestDispatcher rd =
+		    getServletContext().getRequestDispatcher(urlPage);
+		rd.forward(request,response);//redirection du servlet vers page JSP
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
