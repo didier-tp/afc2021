@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.afcepf.al35.web.model.CaddyBean;
 import fr.afcepf.al35.web.model.LoginBean;
 import fr.afcepf.al35.web.model.RechercheBean;
 
@@ -39,6 +40,9 @@ public class MvcServlet extends HttpServlet {
 			break;
 		case "login":
 			doLogin(request,response);
+			break;
+		case "addInCaddy":
+			doAddInCaddy(request,response);
 			break;
 		}
 	}
@@ -80,6 +84,20 @@ public class MvcServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(); //session de l'utilisateur courant
 		session.setAttribute("loginBean",loginBean);
+		
+		RequestDispatcher rd =
+		    getServletContext().getRequestDispatcher(urlPage);
+		rd.forward(request,response);//redirection du servlet vers page JSP
+	}
+	
+	protected void doAddInCaddy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String urlPage = "/addInCaddy.jsp" ;
+		CaddyBean  caddyBean = new CaddyBean();
+		HttpSession session = request.getSession(); //session de l'utilisateur courant
+		caddyBean.addProduitDansCaddy(request.getParameter("produit"),
+				                     session);
+		
+		request.setAttribute("caddyBean",caddyBean);
 		
 		RequestDispatcher rd =
 		    getServletContext().getRequestDispatcher(urlPage);
