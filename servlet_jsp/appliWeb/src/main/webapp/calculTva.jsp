@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,7 @@ if(sHt!=null && sTaux!=null){
 	tva = ht * taux / 100;
 	pageContext.setAttribute("tva", tva);
 	ttc = ht + tva;
+	pageContext.setAttribute("ttc", ttc);
 }else{
 	//valeur par defaut:
 	sHt="200";
@@ -31,7 +33,9 @@ if(sHt!=null && sTaux!=null){
     </form>
     tva (v1)=<%=tva%> <br/>
     tva (v2)=${pageScope.tva} <br/>
-    ttc=<b><%=ttc%></b> <br/>
+    tva (v3)=<fmt:formatNumber value="${pageScope.tva}" pattern=".00" /> <br/>
+    ttc=<%=ttc%> <br/>
+    ttc (arrondi)=<b><fmt:formatNumber value="${pageScope.ttc}" pattern=".00" /></b> <br/>
     <%@ include file="piedPage.jsp" %>
 </body>
 </html>
