@@ -35,6 +35,18 @@
 	    <artifactId>jstl</artifactId>
 	    <version>1.2</version>
 	</dependency>
+	
+    <!-- si connexion database depuis appli java , 
+    dependance mysql nécessaire ici : -->
+	<dependency>
+       <groupId>mysql</groupId>
+       <artifactId>mysql-connector-java</artifactId>
+       <version>8.0.22</version>
+    </dependency>
+    
+     <!-- si connexion database depuis appli tomcat , 
+    recopier mysql-connector-java...jar
+     dans répertoire lib de tomcat -->
   
   </dependencies>
   
