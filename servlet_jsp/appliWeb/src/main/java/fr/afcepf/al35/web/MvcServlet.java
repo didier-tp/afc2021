@@ -74,16 +74,17 @@ public class MvcServlet extends HttpServlet {
 		loginBean.setPassword(request.getParameter("password")); 
 		if(	loginBean.loginUser()) {
 			urlPage = "/utilisateur.jsp";
+			HttpSession session = request.getSession(); //session de l'utilisateur courant
+			session.setAttribute("user",loginBean.getUser());
 		}else {
 			urlPage = "/login.jsp";
 		}
 		//on ajoute (avant le forward) dans l'objet request une information
 		//qui servira à accéder au bean depuis la page jsp
 		//ex: ${loginBean.message} coté jsp
-		//request.setAttribute("loginBean",loginBean);
+		request.setAttribute("loginBean",loginBean);
 		
-		HttpSession session = request.getSession(); //session de l'utilisateur courant
-		session.setAttribute("loginBean",loginBean);
+		
 		
 		RequestDispatcher rd =
 		    getServletContext().getRequestDispatcher(urlPage);
