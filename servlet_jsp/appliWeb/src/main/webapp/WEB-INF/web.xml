@@ -29,4 +29,11 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 	<url-pattern>/TvaServlet</url-pattern>
 </servlet-mapping>
   -->
+  <resource-ref>
+	<description>reference vers le pool de cnx nécessaire</description>
+	<res-ref-name>jdbc/myDB</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+</resource-ref>
+  
 </web-app>
