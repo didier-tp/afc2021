@@ -3,6 +3,8 @@ package fr.afcepf.al35.web.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.afcepf.al35.dao.UserDao;
+
 public class LoginBean {
 	
 	private String username;
@@ -29,9 +31,12 @@ public class LoginBean {
 	}
 
 	public LoginBean() {
+		/*
 		validUsers = new ArrayList<User>();
 		validUsers.add(new User("toto" , "pwdtoto" , "toto@ici.fr"));
 		validUsers.add(new User("titi" , "pwdtiti" , "titi@la.fr"));
+		*/
+		validUsers = UserDao.rechercherValidUsers();
 	}
 
 	public String getUsername() {
