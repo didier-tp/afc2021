@@ -9,7 +9,7 @@
 <body>
      <form action="MvcServlet" method="POST">
         <input type="hidden" name="tache" value="rechercheInfosPays" />
-        nomPays=<input name="nomPays" type="text" /><br/>
+        nomPays (ex: france)=<input name="nomPays" type="text" /><br/>
         <input type="submit" value="rechercher infos sur pays" />
      </form>
      <!--  

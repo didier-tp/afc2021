@@ -53,7 +53,9 @@ public class UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			try{ cn.close(); } catch(Exception e) { }
+			try{ cn.close(); //libérer connexion logique dans le pool
+			                 //pour quelle puisse être recyclé
+			} catch(Exception e) { }
 		}
 		 return listeUsers;
 	}

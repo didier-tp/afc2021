@@ -31,12 +31,13 @@ public class LoginBean {
 	}
 
 	public LoginBean() {
-		/*
-		validUsers = new ArrayList<User>();
-		validUsers.add(new User("toto" , "pwdtoto" , "toto@ici.fr"));
-		validUsers.add(new User("titi" , "pwdtiti" , "titi@la.fr"));
-		*/
-		validUsers = UserDao.rechercherValidUsers();
+		try {
+			validUsers = UserDao.rechercherValidUsers();
+		} catch (Exception e) {
+			validUsers = new ArrayList<User>();
+			validUsers.add(new User("toto" , "pwdtoto" , "toto_sans_db@ici.fr"));
+			validUsers.add(new User("titi" , "pwdtiti" , "titi_sans_db@la.fr"));
+		}
 	}
 
 	public String getUsername() {
