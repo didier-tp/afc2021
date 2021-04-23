@@ -1,5 +1,9 @@
 package fr.afcepf.al35.dao;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +36,25 @@ public class UserDao {
 	
 	public static List<User> rechercherValidUsers() {
 		 List<User> listeUsers = new ArrayList<>();
-		 //...
+		 initDataSource();
+		 Connection cn =null;
+		 try {
+			cn  = ds.getConnection();
+			Statement st = cn.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM User");
+			while(rs.next()) {
+				listeUsers.add(new User(rs.getString("username"),
+						                rs.getString("password"),
+						                rs.getString("email")));
+			}
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try{ cn.close(); } catch(Exception e) { }
+		}
 		 return listeUsers;
 	}
 
