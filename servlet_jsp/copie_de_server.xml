@@ -162,7 +162,7 @@
 						username="root"
 						password="root"
 						driverClassName="com.mysql.jdbc.Driver"
-						url="jdbc:mysql://localhost/myDB"/>
+						url="jdbc:mysql://localhost/myDB?serverTimezone=UTC"/>
       </Context>
       </Host>
     </Engine>
