@@ -12,6 +12,12 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <session-config>
+     <session-timeout>2</session-timeout>
+     <!-- session automatiquement detruite au bout de 2mn d'inactivité
+          de la part de l'utilisateur -->
+  </session-config>
+  
   <!--  
   <servlet>
 	<servlet-name>ServletTva</servlet-name>

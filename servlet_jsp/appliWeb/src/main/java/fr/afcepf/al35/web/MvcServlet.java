@@ -3,6 +3,7 @@ package fr.afcepf.al35.web;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -76,6 +77,16 @@ public class MvcServlet extends HttpServlet {
 			urlPage = "/utilisateur.jsp";
 			HttpSession session = request.getSession(); //session de l'utilisateur courant
 			session.setAttribute("user",loginBean.getUser());
+			ServletContext application = this.getServletContext();
+			Integer compteurConnexions = (Integer)
+					   application.getAttribute("compteurConnexions");
+			if(compteurConnexions==null) {
+				compteurConnexions = 1;
+			}else {
+				compteurConnexions = compteurConnexions + 1;
+				//compteurConnexions = new Integer(compteurConnexions.intValue() + 1)
+			}
+			application.setAttribute("compteurConnexions", compteurConnexions);
 		}else {
 			urlPage = "/login.jsp";
 		}

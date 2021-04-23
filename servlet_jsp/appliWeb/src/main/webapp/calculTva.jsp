@@ -14,6 +14,7 @@ if(sHt!=null && sTaux!=null){
 	Double ht = Double.parseDouble(sHt);
 	Double taux = Double.parseDouble(sTaux);
 	tva = ht * taux / 100;
+	pageContext.setAttribute("tva", tva);
 	ttc = ht + tva;
 }else{
 	//valeur par defaut:
@@ -28,7 +29,8 @@ if(sHt!=null && sTaux!=null){
 	      <label>taux tva:</label><input type="text" name="taux" value="<%=sTaux%>"> <br/>
 	      <input type="submit" value="calculer tva"> 
     </form>
-    tva=<%=tva%> <br/>
+    tva (v1)=<%=tva%> <br/>
+    tva (v2)=${pageScope.tva} <br/>
     ttc=<b><%=ttc%></b> <br/>
     <%@ include file="piedPage.jsp" %>
 </body>

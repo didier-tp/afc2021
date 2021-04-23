@@ -7,4 +7,4 @@ Date date= new Date();
 SimpleDateFormat f =  new SimpleDateFormat("dd/MM/yyyy");
 String sDate = f.format(date);
 %>    
-<p> pied de page , date = <%=sDate%> , <a href="index.html">retour index</a></p>
+<p> pied de page , compteurConnexions= ${applicationScope.compteurConnexions} , username= ${sessionScope.user.username} , date = <%=sDate%> , <a href="index.html">retour index</a></p>
