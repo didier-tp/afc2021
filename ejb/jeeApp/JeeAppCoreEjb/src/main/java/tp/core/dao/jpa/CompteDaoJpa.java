@@ -18,7 +18,6 @@ public class CompteDaoJpa implements CompteDao {
 	private EntityManager em;
 
 	public CompteDaoJpa() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -28,26 +27,27 @@ public class CompteDaoJpa implements CompteDao {
 
 	@Override
 	public List<Compte> findAllComptes() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("SELECT c FROM Compte c", Compte.class)
+				//.setParameter(...,...)
+				.getResultList();
 	}
 
 	@Override
 	public Compte insertCompte(Compte c) {
-		// TODO Auto-generated method stub
-		return null;
+		//au debut c.numero est à null (inconnu)
+		this.em.persist(c);
+		return c; //avec c.numero = clef primaire auto-incrémentée
 	}
 
 	@Override
 	public void updateCompte(Compte c) {
-		// TODO Auto-generated method stub
-
+		this.em.merge(c);
 	}
 
 	@Override
 	public void deleteCompte(Long num) {
-		// TODO Auto-generated method stub
-
+		Compte c= em.find(Compte.class, num);
+		this.em.remove(c);
 	}
 
 }
