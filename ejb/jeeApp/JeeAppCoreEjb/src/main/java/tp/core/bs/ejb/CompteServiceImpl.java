@@ -30,19 +30,17 @@ public class CompteServiceImpl implements CompteService{
 
 	@Override
 	public List<Compte> rechercherComptes() {
-		// TODO Auto-generated method stub
-		return null;
+		return compteDao.findAllComptes();
 	}
 
 	@Override
 	public Compte ajouterCompte(Compte cpt) {
-		// TODO Auto-generated method stub
-		return null;
+		return compteDao.insertCompte(cpt);
 	}
 
 	@Override
 	public void transferer(double montant, long numCptDeb, long numCptCred) {
-		// TODO Auto-generated method stub
+		// sera codé mardi
 		
 	}
 
