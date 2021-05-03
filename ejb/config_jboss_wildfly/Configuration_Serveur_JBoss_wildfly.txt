@@ -1,0 +1,45 @@
+dans ...\wildfly-21.0.2.Final\modules\system\layers\base\com
+ajouter sous répertoires
+   \mysql\main
+       comportant module.xml et mysql-connector-java-8.0.18.jar
+===========================
+dans ...\wildfly-21.0.2.Final\standalone\configuration
+dupliquer standalone.xml en original_standalone.xml
+puis modifier standalone.xml
+en y ajustant une configuration de ce type (près de la ligne 153 environ):
+
+        <datasources>
+                <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+                    <driver>h2</driver>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>sa</password>
+                    </security>
+                </datasource>
+				<datasource jndi-name="java:jboss/datasources/MyDS" pool-name="UserDS" 
+				           enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://localhost:3306/my_schema?serverTimezone=UTC</connection-url>
+                    <driver>mysql</driver>
+                    <security>
+                        <user-name>root</user-name>
+                        <password>root</password>
+                    </security>
+                </datasource>
+                <drivers>
+                    <driver name="h2" module="com.h2database.h2">
+                        <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+		      <!-- NB: le module "com.mysql" devra etre ajouté/configuré dans jboss 
+					   avec une copie de mysqlConnector...jar 
+					   com.mysql.cj.jdbc.MysqlXADataSource pour Mysql 8
+			 -->	
+		    <driver name="mysql" module="com.mysql">
+                        <xa-datasource-class>com.mysql.cj.jdbc.MysqlXADataSource</xa-datasource-class>
+                    </driver>
+                </drivers>
+            </datasources>
+
+=========================
+La version standalone-full.xml est nécessaire pour les EJB de type MDB/JMS .
+
