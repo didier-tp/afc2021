@@ -19,6 +19,16 @@
 	       <h:commandButton value="ajouter" 
 	       action="#{compteMBean.sauvegarderNouveauCompte}"></h:commandButton>
 	    </h:form>
+	    <h:form>
+	       <h:outputLabel>numCptDeb:</h:outputLabel>
+	       <h:inputText value="#{compteMBean.numCptDeb}"></h:inputText> <br/>
+	       <h:outputLabel>numCptCred:</h:outputLabel>
+	       <h:inputText value="#{compteMBean.numCptCred}"></h:inputText> <br/>
+	       <h:outputLabel>montant:</h:outputLabel>
+	       <h:inputText value="#{compteMBean.montant}"></h:inputText> <br/>
+	       <h:commandButton value="effectuer Virement" 
+	       action="#{compteMBean.effectuerVirement}"></h:commandButton>
+	    </h:form>
 	    <h:outputText value="#{compteMBean.message}"></h:outputText><br/>
 	    <hr/>
 	    <h3>liste des comptes</h3>

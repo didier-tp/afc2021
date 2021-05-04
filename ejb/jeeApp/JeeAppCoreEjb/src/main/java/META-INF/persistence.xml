@@ -10,7 +10,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   <class>tp.core.entity.Compte</class>
 
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create"/> <!-- "create" en dev , "none" en prod -->
+			<property name="hibernate.hbm2ddl.auto" value="none"/> <!-- "create" en dev , "none" en prod -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
 			<property name="hibernate.show_sql" value="true"/>
 	    </properties>

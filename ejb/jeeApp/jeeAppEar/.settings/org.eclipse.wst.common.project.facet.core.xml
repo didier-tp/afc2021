@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
+  <runtime name="WildFly 21.0 Runtime"/>
   <installed facet="jst.ear" version="1.3"/>
 </faceted-project>

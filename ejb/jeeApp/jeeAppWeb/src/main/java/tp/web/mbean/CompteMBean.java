@@ -32,13 +32,32 @@ public class CompteMBean {
 	private String message = ""; //à afficher
 	private List<Compte> listeComptes ; //à afficher
 	
+	//pour le formulaire de virement:
+	private Double montant;
+	private Long numCptDeb;
+	private Long numCptCred;
+	
 	public String recuperListeComptes() {
 		this.listeComptes = this.compteService.rechercherComptes();
 		return null;//pour rester sur meme page .xhtml
 	}
 	
+	public String effectuerVirement() {
+		try {
+			this.message="";
+			this.compteService.transferer(this.montant, this.numCptDeb, this.numCptCred);
+			this.message="virement bien effectué";
+			this.listeComptes = this.compteService.rechercherComptes();
+		} catch (Exception e) {
+			this.message ="echec virement " + e.getMessage();
+			e.printStackTrace();
+		}
+		return null;//pour rester sur meme page .xhtml
+	}
+	
 	public String sauvegarderNouveauCompte() {
 		try {
+			this.message="";
 			this.compte = this.compteService.ajouterCompte(this.compte);
 			this.message = "nouveau compte " + compte.toString();
 			recuperListeComptes();
@@ -73,6 +92,30 @@ public class CompteMBean {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public Double getMontant() {
+		return montant;
+	}
+
+	public void setMontant(Double montant) {
+		this.montant = montant;
+	}
+
+	public Long getNumCptDeb() {
+		return numCptDeb;
+	}
+
+	public void setNumCptDeb(Long numCptDeb) {
+		this.numCptDeb = numCptDeb;
+	}
+
+	public Long getNumCptCred() {
+		return numCptCred;
+	}
+
+	public void setNumCptCred(Long numCptCred) {
+		this.numCptCred = numCptCred;
 	}
 	
 	

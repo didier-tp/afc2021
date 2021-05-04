@@ -40,8 +40,14 @@ public class CompteServiceImpl implements CompteService{
 
 	@Override
 	public void transferer(double montant, long numCptDeb, long numCptCred) {
-		// sera codé mardi
+		Compte cptDeb = compteDao.findCompteByNum(numCptDeb);
+		//+ eventuelle verification solde suffisant + exception sinon
+		cptDeb.setSolde(cptDeb.getSolde()-montant);
+		compteDao.updateCompte(cptDeb);
 		
+		Compte cptCred = compteDao.findCompteByNum(numCptCred);
+		cptCred.setSolde(cptCred.getSolde()+montant);
+		compteDao.updateCompte(cptCred);
 	}
 
 }

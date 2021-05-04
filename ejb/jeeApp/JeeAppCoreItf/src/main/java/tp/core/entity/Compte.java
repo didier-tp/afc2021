@@ -1,5 +1,6 @@
 package tp.core.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;//JPA
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class Compte {
 	//mysql remonte bien en mémoire dans l'objet persitent
 	private Long numero;
 	
+	@Column(name="label",length = 64)
 	private String label;
 	
 	private Double solde;
