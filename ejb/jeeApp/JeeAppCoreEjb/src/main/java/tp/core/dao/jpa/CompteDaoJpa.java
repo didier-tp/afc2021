@@ -14,7 +14,7 @@ import tp.core.entity.Compte;
 @Stateless
 public class CompteDaoJpa implements CompteDao {
 	
-	@PersistenceContext() //utilisable sur ebj ou bien sur composant Spring
+	@PersistenceContext(/*unitName = "JeeAppCoreEjb"*/) //utilisable sur ebj ou bien sur composant Spring
 	private EntityManager em;
 
 	public CompteDaoJpa() {
