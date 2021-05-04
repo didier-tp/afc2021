@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import tp.core.bs.CompteService;
 import tp.core.entity.Compte;
+import tp.core.entity.Operation;
 
 @ManagedBean //de JSF
 @RequestScoped
@@ -23,6 +24,17 @@ public class CompteMBean {
 	@PostConstruct
 	public void init() {
 		recuperListeComptes();
+		testTemporaire();
+	}
+	
+	private void testTemporaire() {
+		Compte cpt1 = compteService.rechercherCompteSelonNumero(1L);
+		//cpt1 est ici à l'état détaché
+		System.out.println("cpt1="+cpt1.toString());
+		//risque de "LazyEXception" :
+		for(Operation op : cpt1.getOperations()) {
+			System.out.println("op="+op.toString());
+		}
 	}
 
 	public CompteMBean() {

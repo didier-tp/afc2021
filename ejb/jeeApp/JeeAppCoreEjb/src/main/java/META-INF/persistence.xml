@@ -8,6 +8,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	       dans jboss-wildfly/standalone/configuration/standalone.xml -->
 	   <jta-data-source>java:jboss/datasources/MyDS</jta-data-source>
 	   <class>tp.core.entity.Compte</class>
+	   <class>tp.core.entity.Operation</class>
 
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="none"/> <!-- "create" en dev , "none" en prod -->
