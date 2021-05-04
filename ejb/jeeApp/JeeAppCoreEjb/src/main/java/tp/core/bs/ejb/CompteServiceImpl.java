@@ -1,8 +1,13 @@
 package tp.core.bs.ejb;
 import java.util.List;
 
+import javax.ejb.EJBException;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 
 import tp.core.bs.CompteService;
@@ -11,6 +16,9 @@ import tp.core.entity.Compte;
 
 @Local //ou bien @Remote
 @Stateless //EJB Session sans etat
+//@TransactionManagement(TransactionManagementType.CONTAINER) par defaut
+//@TransactionAttribute(TransactionAttributeType.REQUIRED) par defaut
+// equivalent à @Transactional() de Spring
 public class CompteServiceImpl implements CompteService{
 	
 	//@EJB possible mais moins courant que @Inject
@@ -40,14 +48,24 @@ public class CompteServiceImpl implements CompteService{
 
 	@Override
 	public void transferer(double montant, long numCptDeb, long numCptCred) {
-		Compte cptDeb = compteDao.findCompteByNum(numCptDeb);
-		//+ eventuelle verification solde suffisant + exception sinon
-		cptDeb.setSolde(cptDeb.getSolde()-montant);
-		compteDao.updateCompte(cptDeb);
-		
-		Compte cptCred = compteDao.findCompteByNum(numCptCred);
-		cptCred.setSolde(cptCred.getSolde()+montant);
-		compteDao.updateCompte(cptCred);
+		//le code enrichi par EJB+jboss , déclenche ici
+		//initialisation de entityManager + début transaction
+		try {
+			Compte cptDeb = compteDao.findCompteByNum(numCptDeb);
+			//+ eventuelle verification solde suffisant + exception sinon
+			cptDeb.setSolde(cptDeb.getSolde()-montant);
+			//compteDao.updateCompte(cptDeb); //update automtique lors du futur commit
+			
+			Compte cptCred = compteDao.findCompteByNum(numCptCred);
+			cptCred.setSolde(cptCred.getSolde()+montant);
+			//compteDao.updateCompte(cptCred);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new EJBException("echec transfert" + e.getMessage());
+		}
+		//commit automatique si pas d'exception , rollback automatique sinon
+		//si commit , update automatique sur tous les objets persitants modifiés
+		//fermeture automatique de entityManager , les entités passent à l'état détachés
 	}
 
 }
