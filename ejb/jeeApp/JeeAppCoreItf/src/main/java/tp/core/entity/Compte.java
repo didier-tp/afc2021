@@ -1,10 +1,14 @@
 package tp.core.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;//JPA
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,17 +26,28 @@ public class Compte {
 	
 	private Double solde;
 	//...
+	
+	@OneToMany(fetch = FetchType.LAZY , mappedBy = "compte")
+	private List<Operation> operations;
 
 	public Compte() {
 		super();
 	}
 	
 	
-	
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "Compte [numero=" + numero + ", label=" + label + ", solde=" + solde + "]";
 	}
+
+
+
+
 
 
 
@@ -69,6 +84,18 @@ public class Compte {
 
 	public void setSolde(Double solde) {
 		this.solde = solde;
+	}
+
+
+
+	public List<Operation> getOperations() {
+		return operations;
+	}
+
+
+
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
 	}
 
 	
