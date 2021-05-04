@@ -29,7 +29,7 @@ public class CompteMBean {
 	}
 	
 	private Compte compte = new Compte(); //à saisir et ajouter
-	private String message = ""; //à aficher
+	private String message = ""; //à afficher
 	private List<Compte> listeComptes ; //à afficher
 	
 	public String recuperListeComptes() {
@@ -65,6 +65,14 @@ public class CompteMBean {
 
 	public void setListeComptes(List<Compte> listeComptes) {
 		this.listeComptes = listeComptes;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
 	

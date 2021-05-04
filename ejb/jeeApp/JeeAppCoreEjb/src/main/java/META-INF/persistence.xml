@@ -7,7 +7,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   <!-- NB: java:jboss/datasources/MyDS est configuré 
 	       dans jboss-wildfly/standalone/configuration/standalone.xml -->
 	   <jta-data-source>java:jboss/datasources/MyDS</jta-data-source>
-	
+	   <class>tp.core.entity.Compte</class>
+
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create"/> <!-- "create" en dev , "none" en prod -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>

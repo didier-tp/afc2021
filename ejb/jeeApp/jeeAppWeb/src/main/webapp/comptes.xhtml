@@ -19,10 +19,10 @@
 	       <h:commandButton value="ajouter" 
 	       action="#{compteMBean.sauvegarderNouveauCompte}"></h:commandButton>
 	    </h:form>
-	    <h:outputText value=#{compteMBean.message}></h:outputText><br/>
+	    <h:outputText value="#{compteMBean.message}"></h:outputText><br/>
 	    <hr/>
 	    <h3>liste des comptes</h3>
-	    <h:dataTable border="1" items="#{compteMBean.listeComptes}" var="c">
+	    <h:dataTable border="1" value="#{compteMBean.listeComptes}" var="c">
 	        <h:column>
 	            <f:facet name="header">numero</f:facet>
 	            <h:outputText value="#{c.numero}"></h:outputText>
