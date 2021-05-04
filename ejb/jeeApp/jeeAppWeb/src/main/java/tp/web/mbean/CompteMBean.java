@@ -2,8 +2,11 @@ package tp.web.mbean;
 
 import java.util.List;
 
-import javax.annotation.ManagedBean;
-import javax.enterprise.context.RequestScoped;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+//import javax.annotation.ManagedBean;
+//import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import tp.core.bs.CompteService;
@@ -13,8 +16,20 @@ import tp.core.entity.Compte;
 @RequestScoped
 public class CompteMBean {
 	
-	private Compte compte = new Compte(); //à saisir et ajouter
+	//@EJB
+	@Inject
+	private CompteService compteService=null;
 	
+	@PostConstruct
+	public void init() {
+		recuperListeComptes();
+	}
+
+	public CompteMBean() {
+	}
+	
+	private Compte compte = new Compte(); //à saisir et ajouter
+	private String message = ""; //à aficher
 	private List<Compte> listeComptes ; //à afficher
 	
 	public String recuperListeComptes() {
@@ -23,17 +38,18 @@ public class CompteMBean {
 	}
 	
 	public String sauvegarderNouveauCompte() {
-		this.compte = this.compteService.ajouterCompte(this.compte);
+		try {
+			this.compte = this.compteService.ajouterCompte(this.compte);
+			this.message = "nouveau compte " + compte.toString();
+			recuperListeComptes();
+		} catch (Exception e) {
+			this.message="echec ajout" ;
+			e.printStackTrace();
+		}
 		return null;//pour rester sur meme page .xhtml
 	}
 	
-	//@EJB
-	@Inject
-	private CompteService compteService;
-
-	public CompteMBean() {
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	public Compte getCompte() {
 		return compte;

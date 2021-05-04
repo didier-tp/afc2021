@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="templates/common.xhtml">
+	<ui:define name="title">
+	    Gestion des comptes
+	</ui:define>
+	<ui:define name="content">
+	    <h:form>
+	       <h:outputLabel>label:</h:outputLabel>
+	       <h:inputText value="#{compteMBean.compte.label}"></h:inputText> <br/>
+	       <h:outputLabel>solde initial:</h:outputLabel>
+	       <h:inputText value="#{compteMBean.compte.solde}"></h:inputText> <br/>
+	       <h:commandButton value="ajouter" 
+	       action="#{compteMBean.sauvegarderNouveauCompte}"></h:commandButton>
+	    </h:form>
+	    <h:outputText value=#{compteMBean.message}></h:outputText><br/>
+	    <hr/>
+	    <h3>liste des comptes</h3>
+	    <h:dataTable border="1" items="#{compteMBean.listeComptes}" var="c">
+	        <h:column>
+	            <f:facet name="header">numero</f:facet>
+	            <h:outputText value="#{c.numero}"></h:outputText>
+	        </h:column>
+	        <h:column>
+	            <f:facet name="header">label</f:facet>
+	            <h:outputText value="#{c.label}"></h:outputText>
+	        </h:column>
+	        <h:column>
+	            <f:facet name="header">solde</f:facet>
+	            <h:outputText value="#{c.solde}"></h:outputText>
+	        </h:column>
+	    </h:dataTable>
+	</ui:define>
+</ui:composition>
+</html>
