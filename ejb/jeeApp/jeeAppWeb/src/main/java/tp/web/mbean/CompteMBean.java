@@ -28,7 +28,8 @@ public class CompteMBean {
 	}
 	
 	private void testTemporaire() {
-		Compte cpt1 = compteService.rechercherCompteSelonNumero(1L);
+		//Compte cpt1 = compteService.rechercherCompteSelonNumero(1L);
+		Compte cpt1 = compteService.rechercherCompteAvecOpSelonNumero(1L);
 		//cpt1 est ici à l'état détaché
 		System.out.println("cpt1="+cpt1.toString());
 		//risque de "LazyEXception" :

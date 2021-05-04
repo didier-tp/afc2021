@@ -8,6 +8,7 @@ import tp.core.entity.Compte;
 
 public interface CompteDao {
 	Compte findCompteByNum(Long num);
+	Compte findCompteWithOpByNum(Long num);
 	List<Compte> findAllComptes();
 	Compte insertCompte(Compte c);
 	void updateCompte(Compte c);

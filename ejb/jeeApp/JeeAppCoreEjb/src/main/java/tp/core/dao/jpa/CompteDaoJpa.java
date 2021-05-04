@@ -50,4 +50,14 @@ public class CompteDaoJpa implements CompteDao {
 		this.em.remove(c);
 	}
 
+	@Override
+	public Compte findCompteWithOpByNum(Long num) {
+		/*return em.createQuery("SELECT distinct c FROM Compte c join fetch c.operations WHERE c.numero= :numCpt", Compte.class)
+				.setParameter("numCpt",num)
+				.getSingleResult();*/
+		return em.createNamedQuery("Compte.findCompteWithOpByNum", Compte.class)
+				.setParameter("numCpt",num)
+				.getSingleResult();
+	}
+
 }

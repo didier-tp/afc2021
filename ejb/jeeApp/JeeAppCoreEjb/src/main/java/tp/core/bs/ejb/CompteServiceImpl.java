@@ -4,15 +4,12 @@ import java.util.List;
 import javax.ejb.EJBException;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 
 import tp.core.bs.CompteService;
 import tp.core.dao.CompteDao;
 import tp.core.entity.Compte;
+import tp.core.entity.Operation;
 
 @Local //ou bien @Remote
 @Stateless //EJB Session sans etat
@@ -33,7 +30,14 @@ public class CompteServiceImpl implements CompteService{
 	@Override
 	public Compte rechercherCompteSelonNumero(Long num) {
 		// on délègue le traitement au composant DAO
-		return compteDao.findCompteByNum(num);
+		Compte cpt  = compteDao.findCompteByNum(num);
+		/*
+		//INFAME BIDOUILLE:
+		for(Operation op : cpt.getOperations()) {
+		   //boucle for à vide pour remonter les operations en mémoire
+		    //en mode lazy
+		}*/
+		return cpt;
 	}
 
 	@Override
@@ -66,6 +70,11 @@ public class CompteServiceImpl implements CompteService{
 		//commit automatique si pas d'exception , rollback automatique sinon
 		//si commit , update automatique sur tous les objets persitants modifiés
 		//fermeture automatique de entityManager , les entités passent à l'état détachés
+	}
+
+	@Override
+	public Compte rechercherCompteAvecOpSelonNumero(Long num) {
+		return compteDao.findCompteWithOpByNum(num);
 	}
 
 }
