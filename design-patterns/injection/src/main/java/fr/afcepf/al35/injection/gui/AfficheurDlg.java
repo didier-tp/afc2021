@@ -1,10 +1,12 @@
 package fr.afcepf.al35.injection.gui;
 
-import javax.swing.JOptionPane;
-
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component //de Spring (pour demander à ce que la classe actuelle
+@Qualifier("dlg")
+//soit prise en charge comme un composant Spring)
+//@Named = equivalent de @Component en version CDI/JEE
 public class AfficheurDlg implements Afficheur {
 
 	public AfficheurDlg() {
