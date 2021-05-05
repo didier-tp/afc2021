@@ -14,6 +14,8 @@ public class InjectionApplication {
 		builder.headless(false);
 
 		ConfigurableApplicationContext context = builder.run(args);
+		
+		System.out.println("http://localhost:8181/injection");
 	}
 
 }

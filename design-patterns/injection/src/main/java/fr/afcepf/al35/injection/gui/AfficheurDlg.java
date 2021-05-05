@@ -12,7 +12,8 @@ public class AfficheurDlg implements Afficheur {
 
 	@Override
 	public void afficher(String message) {
-		JOptionPane.showMessageDialog(null, message);
+		System.out.println(">>>> " + message);
+		//JOptionPane.showMessageDialog(null, message);
 		//le paquet javax.swing.* (du module java.desktop)
 		//est devenu optionel de la JVM depuis java 9, 11
 	}
