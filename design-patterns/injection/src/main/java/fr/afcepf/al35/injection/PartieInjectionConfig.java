@@ -2,11 +2,13 @@ package fr.afcepf.al35.injection;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import fr.afcepf.al35.injection.ds.PseudoDataSource;
 import fr.afcepf.al35.injection.ds.PseudoDataSourceV1;
 
 @Configuration
+//@EnableAspectJAutoProxy //à priori par defaut avec spring-boot-starter-aop
 public class PartieInjectionConfig {
 
 	public PartieInjectionConfig() {
