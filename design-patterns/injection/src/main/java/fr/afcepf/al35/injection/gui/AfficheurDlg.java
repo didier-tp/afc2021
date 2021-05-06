@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component //de Spring (pour demander à ce que la classe actuelle
-@Qualifier("dlg")
 //soit prise en charge comme un composant Spring)
 //@Named = equivalent de @Component en version CDI/JEE
+@Qualifier("dlg")
 public class AfficheurDlg implements Afficheur {
 
 	public AfficheurDlg() {

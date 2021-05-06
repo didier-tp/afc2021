@@ -23,11 +23,15 @@ public class Demo {
 	private Traducteur traducteur;
 
 	public Demo() {
+		//dans le constructeur appelé avant les injections
+		//les références traducteur et afficheur sont à null
+		//et inutilisables.
 	}
 	
-	@PostConstruct
+	@PostConstruct //pour marquer une méthode qui sera
+	//automatiquement appelée juste après toutes les injections
 	public void apresInitialisation() {
-		String msgTrad = traducteur.traduire("essai injection");
+		String msgTrad = traducteur.traduire("essai injection v1 (via @Autowired) ");
 		afficheur.afficher(msgTrad);
 	}
 
