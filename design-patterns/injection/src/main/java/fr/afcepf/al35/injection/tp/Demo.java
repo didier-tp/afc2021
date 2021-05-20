@@ -34,7 +34,7 @@ public class Demo {
 	
 	@PostConstruct //pour marquer une méthode qui sera
 	//automatiquement appelée juste après toutes les injections
-	public void apresInitialisation() {
+	public void afterInit() {
 		String msgTrad = traducteur.traduire("essai injection v1 (via @Autowired) ");
 		afficheur.afficher(msgTrad);
 		System.out.println(pseudoDataSource.getConnection());
