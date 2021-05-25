@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<div xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}"
+      layout:fragment="content">
+    <h3>login (client banque)</h3>
+	<hr/>
+	<form action="../compte/login" method="POST">
+	    numClient : <input name="numClient" type="text" /> <br/>
+	    <input  type="submit" value="identification client banque" /> <br/>
+	    <input type="hidden"   name="${_csrf.parameterName}"      value="${_csrf.token}"/>
+	</form>
+</div>   
