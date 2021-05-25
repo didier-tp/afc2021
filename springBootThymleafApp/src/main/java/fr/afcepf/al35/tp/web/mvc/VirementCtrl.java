@@ -58,6 +58,7 @@ public class VirementCtrl {
 	    //reactualiser les valeurs des comptes en session http:
 	    model.addAttribute("listeCpt", this.compteService.comptesDuClient(numClientIdentifie));
 	    model.addAttribute("message", "virement bien effectue");
+	    model.addAttribute("title","comptes");
         return "comptes"; 
 		}
     }

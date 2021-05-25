@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
    <head>
-      <meta charset="UTF-8" />
-       <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE"></title>
+       <meta charset="UTF-8" />
+       <title layout:fragment="title" th:utext="${title}"></title>
        <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/> 
        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/> 
    </head>

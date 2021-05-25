@@ -33,6 +33,7 @@ public class CompteCtrl {
 	    if(listeCpt!=null && !listeCpt.isEmpty()){
 	          model.addAttribute("numClient",numClient);
               model.addAttribute("listeCpt",listeCpt);
+              model.addAttribute("title","comptes");
 	    }
         return "comptes"; 
     }

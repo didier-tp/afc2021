@@ -6,7 +6,7 @@
     numero client identifie: <span th:utext="${numClient}" ></span>
 	<h3>liste des comptes</h3>
 	<table border="1" >
-	        <tr><th>numero</th><th>label</th><th>solde</th></tr>
+	        <tr><th>numéro</th><th>label</th><th>solde</th></tr>
 			<tr th:each ="cpt : ${listeCpt}">
 			    <td th:utext="${cpt.numero}"></td>
 			    <td th:utext="${cpt.label}"></td>

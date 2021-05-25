@@ -2,7 +2,7 @@
 <div xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}"
-      layout:fragment="content">
+     layout:fragment="content">
     <h1>Welcome Thymeleaf</h1>
     <p>message=<b><span th:utext="${message}"></span></b></p>
     <hr/>
@@ -10,5 +10,6 @@
     <a href="to-ex-ajax">exemple ajax</a><br/>
     <hr/>
     <a href="session-end">fin de session / deconnexion</a><br/>
-    <!-- num session http/jee= <%=session.getId()%> -->
-</div>   
+    num session http/jee= <span th:text="${idSession}"></span>
+</div>
+  
