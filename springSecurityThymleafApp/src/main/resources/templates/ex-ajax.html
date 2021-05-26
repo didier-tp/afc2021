@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<div xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}"
+      layout:fragment="content">
+<script  src="../js/jquery-3.5.1.js"></script>
+<script>
+   function chercherCouleursViaAjax(){
+	   $.ajax({
+		       url : '../rest/couleur/selonLangue?langue=fr',
+		       type : 'GET' ,
+		       success : function(result, status , xhr){ 
+		               console.log("result:" + JSON.stringify(result));
+		               $('#divA').html(JSON.stringify(result)).css("color",'blue');
+		               $('#listeUl').empty();
+		               for(let i in result){
+		            	   var couleur= result[i];
+		            	   $('#listeUl').append("<li>"+ couleur.name + " " + couleur.code +"</li>");
+		               }
+		           },
+		       error : function(jqqXhr, status, erreur){
+		    	       console.log("erreur:" + error);
+		           }
+		    });
+   }
+  </script>
+  <h1>Exemple ajax </h1>
+    <div id="divA"></div>
+    <hr/> 
+    <button onclick="chercherCouleursViaAjax()">essai dom/js/ajax</button>
+    <hr/>
+    <ul id="listeUl">
+    </ul>
+</div>   

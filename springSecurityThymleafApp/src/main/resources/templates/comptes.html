@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<div xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}"
+      layout:fragment="content">
+    numero client identifie: <span th:utext="${numClient}" ></span>
+	<h3>liste des comptes</h3>
+	<table border="1" >
+	        <tr><th>numéro</th><th>label</th><th>solde</th></tr>
+			<tr th:each ="cpt : ${listeCpt}">
+			    <td th:utext="${cpt.numero}"></td>
+			    <td th:utext="${cpt.label}"></td>
+			    <td th:utext="${cpt.solde}"></td>
+			 </tr>
+	</table>
+	<hr/>
+	<a href="../virement/to-virement">nouveau virement</a><br/>
+	<br/>
+</div>   

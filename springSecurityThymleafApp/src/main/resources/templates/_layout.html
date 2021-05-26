@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+   <head>
+       <meta charset="UTF-8" />
+       <title layout:fragment="title" th:utext="${title}"></title>
+       <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/> 
+       <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/> 
+   </head>
+   <body>
+     <div class="container-fluid">
+      <div th:replace="_header"></div>
+
+      <div layout:fragment="content">
+        default content from _layout.html (to override)
+      </div>
+      <div th:replace="_footer"></div> 
+     </div><!-- end of container-fluid -->
+   </body>
+    
+</html>
