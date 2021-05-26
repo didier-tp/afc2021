@@ -6,7 +6,7 @@
     <br/>
      <div class="card">
 			<div class="card-header bg-primary text-white">
-			   virement interne (mini-banque)
+			   virement interne (mini-banque) pour le client <span th:text="${numClient}"></span>
 			 </div>
       <div class="card-body">
 	  <form class="form-horizontal" action="doVirement"  
@@ -14,8 +14,8 @@
 			     <div class="form-group row">
 				    <label class="control-label text-sm-right col-sm-4">numCptDeb:</label> <!-- <span id="spanIdProd"></span> -->
 					<div class="col-sm-8">	
-					    <!-- nb: syntaxe th:field en *{...} pour sélectionner une sous partie 
-					         de l'objet précisé par th:object du formulaire -->
+					    <!-- nb: syntaxe th:field en *{...} pour sï¿½lectionner une sous partie 
+					         de l'objet prï¿½cisï¿½ par th:object du formulaire -->
 						<select th:field="*{numCptDeb}" class="form-control">
 	                          <option th:each ="cpt : ${listeCpt}" th:value="${cpt.numero}" th:utext="${cpt.numero} + ' - ' + ${cpt.label} + ' : ' + ${cpt.solde}"></option>
 	                    </select>

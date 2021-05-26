@@ -16,6 +16,7 @@ import fr.afcepf.al35.tp.web.mvc.form.VirementForm;
 
 @Controller 
 @RequestMapping("/virement")
+
 //stateless
 @SessionAttributes( value={"numClient","listeCpt"} ) //noms des "modelAttributes" qui sont EN PLUS récupérés/stockés en SESSION HTTP
                  //au niveau de la page de rendu --> visibles en requestScope ET en sessionScope
