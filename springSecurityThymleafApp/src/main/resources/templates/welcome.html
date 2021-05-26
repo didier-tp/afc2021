@@ -1,16 +1,28 @@
 <!DOCTYPE HTML>
 <div xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}"
      layout:fragment="content">
     <h1>Welcome Thymeleaf</h1>
     <p>message=<b><span th:utext="${message}"></span></b></p>
     <hr/>
-    <a href="to-login">login (client)</a><br/>
+    <div sec:authorize="isAuthenticated()">
+       <h3>authenticated user </h3>
+       Logged user: <span sec:authentication="name">Unknown</span> <br/>
+       Roles: <span sec:authentication="principal.authorities">[]</span> <br/>
+    </div>
+    <hr/>
+    <a href="../compte/to-nouveauClient">nouveau client</a><br/>
+    <!-- <a href="to-login">login.html (client)</a><br/>   -->
+    <a href="../compte/afterLogin">comptes du client (after spring security login)</a><br/>
+    <a href="to-for-admin">for-admin</a><br/>
     <a href="to-ex-ajax">exemple ajax</a><br/>
     <a href="to-carousel">exemple carousel</a><br/>
     <hr/>
     <a href="session-end">fin de session / deconnexion</a><br/>
     num session http/jee= <span th:text="${idSession}"></span>
+    <hr/>
+    valid accounts (dev): customer(1,pwd1) , customer(2,pwd2)  , admin(superAdmin,007)
 </div>
   

@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<div xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}"
+      layout:fragment="content">
+    <h3>nouveau (client banque)</h3>
+	<hr/>
+	<form th:action="@{../compte/nouveauClient}" 
+	      th:object="${client}" method="POST">
+	    numero : <input th:field="*{numero}" type="text" /> (as username)<br/>
+	    password : <input th:field="*{password}" type="text" /> <br/>
+	    nom : <input th:field="*{nom}" type="text" /> <br/>
+	    prenom : <input th:field="*{prenom}" type="text" /> <br/>
+	    <input  type="submit" value="enregistrer nouveau client" /> <br/>
+	</form>
+</div>   

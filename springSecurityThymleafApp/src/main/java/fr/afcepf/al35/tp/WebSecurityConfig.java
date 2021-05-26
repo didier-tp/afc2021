@@ -1,28 +1,25 @@
 package fr.afcepf.al35.tp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)//necessary for @PreAuthorize("hasRole('ADMIN or ...')")
+@EnableGlobalMethodSecurity(prePostEnabled = true)//necessary for @PreAuthorize("hasRole('ADMIN or ...')")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	 
 	    @Autowired
-	    private BCryptPasswordEncoder passwordEncoder;
+	    private PasswordEncoder passwordEncoder;
 	    
-	    @Bean
-	    public BCryptPasswordEncoder passwordEncoder() {
-	        return new BCryptPasswordEncoder();
-	    }
 	    
+	    /*
 	    @Autowired
 	    public void globalUserDetails(final AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication()
@@ -33,6 +30,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		  .withUser("admin2").password(passwordEncoder.encode("pwdadmin2")).roles("ADMIN").and()
 		  .withUser("publisher2").password(passwordEncoder.encode("pwdpublisher2")).roles("PUBLISHER"); 
 	    }
+	    */
+	    
+	    @Autowired
+	    private MyUserDetailsService myUserDetailsService;
+	    
+	    @Autowired
+	    public void globalUserDetails(final AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(myUserDetailsService)
+		    .passwordEncoder(passwordEncoder);
+	    }
+	   
 	  
 	    	
 	   @Override
@@ -48,10 +56,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	                 "/**/*.css",
 	                 "/**/*.js").permitAll()
 		 		   .antMatchers("/mvc/hello/hello-world").permitAll()
+		 		   .antMatchers("/rest/**/*").permitAll()
 		 		   .antMatchers("/app/to-welcome").permitAll()
 		 		   .antMatchers("/app/session-end").permitAll()
 		 		   .antMatchers("/app/to-ex-ajax").permitAll()
 		 		   .antMatchers("/app/to-carousel").permitAll()
+		 		   .antMatchers("/compte/to-nouveauClient").permitAll()
+		 		   .antMatchers("/compte/nouveauClient").permitAll()
 		 		   .anyRequest().authenticated()
 		 		   .and().formLogin().permitAll()
 	 	 		   .and().csrf();

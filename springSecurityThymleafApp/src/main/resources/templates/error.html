@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<div xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}"
+      layout:fragment="content">
+
+  <div th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+        <h3 th:text="|${httpStatus} - ${httpStatus.reasonPhrase}|">404</h3>
+        <p th:utext="${errorMessage}">Error java.lang.NullPointerException</p>
+        <a href="welcome.html" th:href="@{/app/to-welcome}">Back to Home Page (welcome)</a>
+    </div>
+</div>   

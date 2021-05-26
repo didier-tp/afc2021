@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<div xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}"
+      layout:fragment="content">
+
+  <h1>page pour administrateurs </h1>
+    <div id="divAdmin">
+    seul un administrateur (ayant ROLE_ADMIN) est censé pouvoir arriver là .
+    </div>
+    ...
+    Logged user: <span sec:authentication="name">Unknown</span> <br/>
+    Roles: <span sec:authentication="principal.authorities">[]</span> <br/>
+    <hr/>
+</div>   
