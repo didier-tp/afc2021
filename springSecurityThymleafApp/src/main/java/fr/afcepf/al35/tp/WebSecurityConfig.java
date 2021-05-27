@@ -61,6 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		 		   .antMatchers("/app/session-end").permitAll()
 		 		   .antMatchers("/app/to-ex-ajax").permitAll()
 		 		   .antMatchers("/app/to-carousel").permitAll()
+		 		   .antMatchers("/commande/*").permitAll()
 		 		   .antMatchers("/compte/to-nouveauClient").permitAll()
 		 		   .antMatchers("/compte/nouveauClient").permitAll()
 		 		   .anyRequest().authenticated()

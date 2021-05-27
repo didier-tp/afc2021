@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<div xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}"
+      layout:fragment="content">
+    <h3>commande</h3>
+	<hr/>
+	<form th:action="@{../commande/update-commande}" 
+	      th:object="${cmde}" method="POST">
+	    numero : <label th:text="*{numero}" ></label>
+	             <input th:field="*{numero}" type="hidden" /><br/>
+	    sDate : <input th:field="*{sDate}" type="text" /> <br/>
+	    id (client) : <label th:text="*{client.id}" ></label> 
+	                  <input th:field="*{client.id}" type="hidden" /><br/>
+	    nom (client) : <input th:field="*{client.nom}" type="text" /> <br/>
+	    prenom (client): <input th:field="*{client.prenom}" type="text" /> <br/>
+	    
+	    <div th:each="p, rowStat  : *{produits}">
+        <hr/>
+        ref (produit) : <label th:text="*{produits[__${rowStat.index}__].ref}" ></label> 
+	                    <input th:field="*{produits[__${rowStat.index}__].ref}" type="hidden" /><br/>
+     	label (produit) : <input type="text" th:field="*{produits[__${rowStat.index}__].label}" />
+     	prix (produit) : <input type="text" th:field="*{produits[__${rowStat.index}__].prix}" />
+ 		</div>
+	    
+	    <input  type="submit" value="update commande" /> <br/>
+	</form>
+</div>   

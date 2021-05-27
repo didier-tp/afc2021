@@ -31,8 +31,9 @@ public class InitDataSet {
 	
 	@PostConstruct
 	public void initJeuxDeDonneesQueJaime() {
-		
-		Client client1 = clientService.sauvegarderClient(new Client(1L,"Bon", "jean",passwordEncoder.encode("pwd1")));
+		String encodedPwd = passwordEncoder.encode("pwd1"); 
+		System.out.println("encodedPwd="+encodedPwd);
+		Client client1 = clientService.sauvegarderClient(new Client(1L,"Bon", "jean",encodedPwd));
 		Compte cA = new Compte(null,"compte A", 234.0);
 		cA.setClient(client1);compteService.sauvegarderCompte(cA);
 		Compte cB = new Compte(null,"compte B", 567.0);
