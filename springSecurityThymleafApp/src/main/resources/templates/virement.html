@@ -7,6 +7,7 @@
      <div class="card">
 			<div class="card-header bg-primary text-white">
 			   virement interne (mini-banque) pour le client <span th:text="${numClient}"></span>
+			   ( <span th:text="${session.numClient}"></span> )
 			 </div>
       <div class="card-body">
 	  <form class="form-horizontal" th:action="@{doVirement}"  

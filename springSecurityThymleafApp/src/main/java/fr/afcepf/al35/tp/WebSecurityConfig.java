@@ -65,7 +65,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		 		   .antMatchers("/compte/to-nouveauClient").permitAll()
 		 		   .antMatchers("/compte/nouveauClient").permitAll()
 		 		   .anyRequest().authenticated()
-		 		   .and().formLogin().permitAll()
+		 		   //.and().formLogin().permitAll()
+		 		   .and().formLogin()
+		 		          .loginPage("/app/to-login-springSecurity")
+		 		          .failureUrl("/app/with-login-error")
+		 		          .permitAll()
 	 	 		   .and().csrf();
 	    }
 	    

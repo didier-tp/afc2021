@@ -1,5 +1,7 @@
 package fr.afcepf.al35.tp.web.mvc;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -8,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.afcepf.al35.tp.web.mvc.form.CommandeForm;
-import fr.afcepf.al35.tp.web.mvc.form.ThActions;
 import fr.afcepf.al35.tp.web.mvc.form.data.Commande;
 import fr.afcepf.al35.tp.web.mvc.form.data.Customer;
 import fr.afcepf.al35.tp.web.mvc.form.data.Produit;
@@ -23,30 +24,21 @@ public class CommandeCtrl {
 		cmde.setClient(cli);
 		cmde.addProduit(new Produit(1L,"produit1",5.5));
 		cmde.addProduit(new Produit(2L,"produit2",6.6));
+		cmde.addProduit(new Produit(3L,"produit3",7.7));
 		return cmde;
 	}
 	
-	@RequestMapping("/aff-commande")
-    public String affCommande(Model model){
-		Commande cmde = buildInitialCommande() ;
-		System.out.println("initial_commande (before update):" + cmde);
-		CommandeForm cmdeF = new CommandeForm(cmde);
-		model.addAttribute("cmdeF",cmdeF);
-	   return "commande"; 
-    }
 	
 	@RequestMapping("/update-commande")
     public String updateCommande(Model model,
     		                 @ModelAttribute("cmdeF") CommandeForm cmdeF , 
     		                 HttpSession session) {
-		System.out.println("actionsOnProductsOfCmde="+cmdeF.getProdActions());
-		int nbNew = cmdeF.getProdActions().getNbNew();
-		if(nbNew>0) {
-			for(int i=0;i<nbNew;i++) {
-				cmdeF.getCmde().getProduits().add(new Produit());
-			}
+		if(cmdeF.getCmde()==null) {
+			Commande cmde = buildInitialCommande() ;
+			System.out.println("initial_commande (before update):" + cmde);
+			cmdeF = new CommandeForm(cmde);
 		}
-		cmdeF.resetThActions();
+		cmdeF.adjustCommandeFromThActions();
 		System.out.println("updated cmde="+cmdeF.getCmde());
 		model.addAttribute("cmdeF",cmdeF);
 		return "commande"; 

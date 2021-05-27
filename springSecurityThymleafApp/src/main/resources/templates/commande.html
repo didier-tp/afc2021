@@ -3,6 +3,26 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}"
       layout:fragment="content">
+    <script>
+    var mapOfIdsToDelete=[];
+    
+    function onDelete(idToDelete,bToDelete){
+    	console.log("idToDelete="+idToDelete + ":"+ bToDelete);
+    	if(idToDelete==null)
+    		idToDelete="null";
+    	mapOfIdsToDelete[idToDelete.toString()]=bToDelete;
+    	var fieldProdActionsIdsToDelete = 
+    		document.getElementById("prodActions.idsToDelete");
+        var strIdsToDelete="";
+        for(idToDelete in mapOfIdsToDelete){
+        	if(mapOfIdsToDelete[idToDelete]==true){
+        		strIdsToDelete+=(" " +idToDelete);
+        	}
+        	strIdsToDelete = strIdsToDelete.trim()
+        }
+    	fieldProdActionsIdsToDelete.value=strIdsToDelete;
+    }
+    </script>  
     <h3>commande</h3>
 	<hr/>
 	<form th:action="@{../commande/update-commande}" 
@@ -19,11 +39,13 @@
         ref (produit) : <label th:text="*{cmde.produits[__${rowStat.index}__].ref}" ></label> 
 	                    <input th:field="*{cmde.produits[__${rowStat.index}__].ref}" type="hidden" /><br/>
      	label (produit) : <input type="text" th:field="*{cmde.produits[__${rowStat.index}__].label}" />
-     	prix (produit) : <input type="text" th:field="*{cmde.produits[__${rowStat.index}__].prix}" /> :
+     	prix (produit) : <input type="text" th:field="*{cmde.produits[__${rowStat.index}__].prix}" /> 
+     	: <input type="checkbox" value="delete" th:onclick="'onDelete('+ *{cmde.produits[__${rowStat.index}__].ref} +',this.checked)'" /> delete
      
  		</div>
 	    <hr/>
 	     nb new product to add : <input th:field="*{prodActions.nbNew}" type="text" /> <br/>
+	     id of product(s) to delete :<input th:field="*{prodActions.idsToDelete}" class="RedCssClass" type="text" /> <br/>
 	    <input  type="submit" value="update commande" /> <br/>
 	</form>
 </div>   

@@ -4,20 +4,13 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}"
      layout:fragment="content">
-    <h1>Welcome Thymeleaf</h1>
+    <h1>Welcome Thymeleaf (public part)</h1>
     <p>message=<b><span th:utext="${message}"></span></b></p>
-    <hr/>
-    <div sec:authorize="isAuthenticated()">
-       <h3>authenticated user </h3>
-       Logged user: <span sec:authentication="name">Unknown</span> <br/>
-       Roles: <span sec:authentication="principal.authorities">[]</span> <br/>
-    </div>
     <hr/>
     <a href="../compte/to-nouveauClient">nouveau client</a><br/>
     <!-- <a href="to-login">login.html (client)</a><br/>   -->
-    <a href="../compte/afterLogin">comptes du client (after spring security login)</a><br/>
-    <a href="to-for-admin">for-admin</a><br/>
-    <a href="../commande/aff-commande">commande</a><br/>
+     <a href="to-welcome-authenticated">welcome-authenticated with loginSpringSecurity.html automatic hook (client or admin)</a><br/>
+    <a href="../commande/update-commande">update commande</a><br/>
     <a href="to-ex-ajax">exemple ajax</a><br/>
     <a href="to-carousel">exemple carousel</a><br/>
     <hr/>

@@ -19,17 +19,37 @@ public class AppCtrl {
 		return session.getId();
 	}
 	
-	@RequestMapping("/to-welcome")
+	@RequestMapping("/to-welcome") //forEveryBody (permitAll)
 	String toWelcome(Model model) {
 		model.addAttribute("message", "bienvenu(e)");
 		model.addAttribute("title","welcome");
 	    return "welcome"; 
 	}
 	
+	@RequestMapping("/to-welcome-authenticated")//automatic auth Required
+	String toWelcomeAuthenticated(Model model) {
+		model.addAttribute("message", "bienvenu(e)");
+		model.addAttribute("title","welcome-authenticated");
+	    return "welcomeAuth"; 
+	}
+	
 	@RequestMapping("/to-login")
 	String toLogin(Model model) {
 		model.addAttribute("title","login");
 	    return "login"; 
+	}
+	
+	@RequestMapping("/to-login-springSecurity")
+	String toLoginSpringSecurity(Model model) {
+		model.addAttribute("title","loginSpringSecurity");
+	    return "loginSpringSecurity"; 
+	}
+	
+	@RequestMapping("/with-login-error")
+	String withLoginError(Model model) {
+		model.addAttribute("title","loginSpringSecurity");
+		model.addAttribute("loginError", true);
+	    return "loginSpringSecurity"; 
 	}
 	
 	@PreAuthorize("hasRole('ADMIN')") //check if ROLE_ADMIN

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+ 
+<div xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}"
+      layout:fragment="content"> 
+<!--      
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+       <meta charset="UTF-8" />
+       <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/> 
+   </head>
+   <body>  -->    
+    <h3>login (spring security)</h3>
+	<hr/>
+	<form th:action="@{/app/to-login-springSecurity}" method="post" style="max-width: 350px; margin: 0 auto;">
+     
+        <p th:if="${loginError}" class="error ResCssClass">Wrong user or password</p>
+        <div class="border border-secondary p-3 rounded">
+            <p>Access to MiniBank</p>
+            <p>
+                <input type="text" name="username" class="form-control" placeholder="username" required autofocus/>
+            </p>
+            <p>
+                <input type="password" name="password" class="form-control" placeholder="password" required />
+            </p>
+            <p>
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </p>
+        </div>
+    </form>        
+</div>  
+<!-- 
+</body>
+</html>  
+ -->
+ 
+ <!-- NB: bug indirect "manque sourcemap sur bootstrap css" 
+ sur navigateur Chrome , parmétrages "outils de dev" , 
+ décocher si besoin "Enable javascript source map" et "Enable Css source map"
+ 
+  -->
