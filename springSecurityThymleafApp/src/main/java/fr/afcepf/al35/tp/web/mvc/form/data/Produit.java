@@ -1,4 +1,4 @@
-package fr.afcepf.al35.tp.web.mvc.form;
+package fr.afcepf.al35.tp.web.mvc.form.data;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +10,7 @@ public class Produit {
 	private Long ref;
 	private String label;
 	private Double prix;
+	
 	
 	public Produit(Long ref, String label, Double prix) {
 		super();

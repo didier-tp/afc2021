@@ -1,0 +1,1 @@
+NB: toutes les classes de ce packages pourraient être des @Entity

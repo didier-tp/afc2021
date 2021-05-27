@@ -1,4 +1,4 @@
-package fr.afcepf.al35.tp.web.mvc.form;
+package fr.afcepf.al35.tp.web.mvc.form.data;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

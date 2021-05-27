@@ -1,4 +1,4 @@
-package fr.afcepf.al35.tp.web.mvc.form;
+package fr.afcepf.al35.tp.web.mvc.form.data;
 
 import java.util.ArrayList;
 import java.util.List;
