@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Controller 
-@RequestMapping("/mvc/hello")
 public class HelloWorldCtrl {
 	
 	@RequestMapping("/hello-world")

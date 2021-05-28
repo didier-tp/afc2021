@@ -3,11 +3,11 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{_layout}"
       layout:fragment="content">
-<script  src="../js/jquery-3.5.1.js"></script>
+<script  src="js/jquery-3.5.1.js"></script>
 <script>
    function chercherCouleursViaAjax(){
 	   $.ajax({
-		       url : '../rest/couleur/selonLangue?langue=fr',
+		       url : 'rest/couleur/selonLangue?langue=fr',
 		       type : 'GET' ,
 		       success : function(result, status , xhr){ 
 		               console.log("result:" + JSON.stringify(result));

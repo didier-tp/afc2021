@@ -15,7 +15,6 @@ import fr.afcepf.al35.tp.web.mvc.form.data.Customer;
 import fr.afcepf.al35.tp.web.mvc.form.data.Produit;
 
 @Controller 
-@RequestMapping("/commande")
 public class CommandeCtrl {
 		
 	public Commande buildInitialCommande() {

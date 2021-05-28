@@ -20,7 +20,6 @@ import fr.afcepf.al35.tp.service.CompteService;
 import lombok.NoArgsConstructor;
 
 @Controller 
-@RequestMapping("/compte")
 //avec session
 @NoArgsConstructor
 @SessionAttributes( value={"numClient","listeCpt"} ) //noms des "modelAttributes" qui sont EN PLUS récupérés/stockés en SESSION HTTP

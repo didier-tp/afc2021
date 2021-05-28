@@ -5,7 +5,7 @@
       layout:fragment="content">
     <h3>login (client banque)</h3>
 	<hr/>
-	<form th:action="@{../compte/afterLogin}" method="POST">
+	<form th:action="@{/afterLogin}" method="POST">
 	    numClient : <input name="numClient" type="text" /> <br/>
 	    <input  type="submit" value="identification client banque" /> <br/>
 	</form>

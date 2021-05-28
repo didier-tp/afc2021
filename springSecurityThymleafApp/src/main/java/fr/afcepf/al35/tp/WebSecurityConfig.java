@@ -54,21 +54,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	                 "/**/*.svg",
 	                 "/**/*.jpg",
 	                 "/**/*.css",
+	                 "/**/*.map",
 	                 "/**/*.js").permitAll()
-		 		   .antMatchers("/mvc/hello/hello-world").permitAll()
+		 		   .antMatchers("/hello-world").permitAll()
 		 		   .antMatchers("/rest/**/*").permitAll()
-		 		   .antMatchers("/app/to-welcome").permitAll()
-		 		   .antMatchers("/app/session-end").permitAll()
-		 		   .antMatchers("/app/to-ex-ajax").permitAll()
-		 		   .antMatchers("/app/to-carousel").permitAll()
-		 		   .antMatchers("/commande/*").permitAll()
-		 		   .antMatchers("/compte/to-nouveauClient").permitAll()
-		 		   .antMatchers("/compte/nouveauClient").permitAll()
+		 		   .antMatchers("/to-welcome").permitAll()
+		 		   .antMatchers("/session-end").permitAll()
+		 		   .antMatchers("/to-ex-ajax").permitAll()
+		 		   .antMatchers("/to-carousel").permitAll()
+		 		   .antMatchers("/update-commande").permitAll()
+		 		   .antMatchers("/to-nouveauClient").permitAll()
+		 		   .antMatchers("/nouveauClient").permitAll()
 		 		   .anyRequest().authenticated()
 		 		   //.and().formLogin().permitAll()
 		 		   .and().formLogin()
-		 		          .loginPage("/app/to-login-springSecurity")
-		 		          .failureUrl("/app/with-login-error")
+		 		          .loginPage("/to-login-springSecurity")
+		 		          .failureUrl("/with-login-error")
 		 		          .permitAll()
 	 	 		   .and().csrf();
 	    }

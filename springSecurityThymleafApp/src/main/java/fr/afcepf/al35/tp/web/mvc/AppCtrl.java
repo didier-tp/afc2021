@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller 
-//@RequestMapping(value="/mvc/welcome" , produces = "text/html;charset=UTF-8")
-@RequestMapping("/app")
 public class AppCtrl {
 	
 	@ModelAttribute("idSession")

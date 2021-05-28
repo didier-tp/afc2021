@@ -5,7 +5,7 @@
       layout:fragment="content">
     <h3>nouveau (client banque)</h3>
 	<hr/>
-	<form th:action="@{../compte/nouveauClient}" 
+	<form th:action="@{/nouveauClient}" 
 	      th:object="${client}" method="POST">
 	    numero : <input th:field="*{numero}" type="text" /> (as username)<br/>
 	    password : <input th:field="*{password}" type="text" /> <br/>

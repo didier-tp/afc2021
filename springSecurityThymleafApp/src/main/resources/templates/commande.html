@@ -25,7 +25,7 @@
     </script>  
     <h3>commande</h3>
 	<hr/>
-	<form th:action="@{../commande/update-commande}" 
+	<form th:action="@{/update-commande}" 
 	      th:object="${cmdeF}" method="POST">
 	    numero : <label th:text="*{cmde.numero}" ></label>
 	             <input th:field="*{cmde.numero}" type="hidden" /><br/>
