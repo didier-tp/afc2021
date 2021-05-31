@@ -32,7 +32,8 @@
 	    sDate : <input th:field="*{cmde.sDate}" type="text" /> <br/>
 	    id (client) : <label th:text="*{cmde.client.id}" ></label> 
 	                  <input th:field="*{cmde.client.id}" type="hidden" /><br/>
-	    nom (client) : <input th:field="*{cmde.client.nom}" type="text" /> <br/>
+	    nom (client) : <input th:field="*{cmde.client.nom}" type="text"
+	                          th:class="*{cmde.client.nom == 'Bon' } ? 'enEvidence' : '' " /> <br/>
 	    prenom (client): <input th:field="*{cmde.client.prenom}" type="text" /> <br/>
 	    <div th:each="p, rowStat  : *{cmde.produits}">
         <hr/>
