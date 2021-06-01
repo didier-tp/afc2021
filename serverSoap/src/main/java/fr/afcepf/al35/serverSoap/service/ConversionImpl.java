@@ -1,5 +1,14 @@
 package fr.afcepf.al35.serverSoap.service;
 
+import javax.jws.WebService;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+//webService Soap dont on précise l'interface SEI = "Service Endpoint Interface"
+@Service //ou @Stateless sur projet EJB
+@Transactional
+@WebService(endpointInterface = "fr.afcepf.al35.serverSoap.service.Conversion")
 public class ConversionImpl implements Conversion{
 
 	@Override
