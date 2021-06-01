@@ -3,8 +3,10 @@ package fr.afcepf.al35.tp.service;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.annotation.PostConstruct;
 import javax.xml.namespace.QName;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import fr.afcepf.al35.serverSoap.service.Conversion;
@@ -14,8 +16,13 @@ public class ConversionServiceDelegate implements Conversion {
 	
 	private Conversion proxyConversion=null;
 	
-	public ConversionServiceDelegate() {
-		String sWsdlUrl="http://localhost:8484/serverSoap/service/conversion?wsdl";
+	@Value("${conversion.wsdl}")//conversion.wsdl=.... dans application.properties
+	private String conversionWsdlUrl;
+	
+	@PostConstruct
+	public void initConversionServiceDelegate() {
+		//String sWsdlUrl="http://localhost:8484/serverSoap/service/conversion?wsdl";
+		String sWsdlUrl = this.conversionWsdlUrl;
 		URL wsdlUrl = null;
 		try {
 			wsdlUrl = new URL(sWsdlUrl);
