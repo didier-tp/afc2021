@@ -52,6 +52,23 @@
 		</dependency>
 		
 		<dependency>
+	    <groupId>org.apache.cxf</groupId>
+	    <artifactId>cxf-rt-frontend-jaxws</artifactId>
+	    <version>3.3.1</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.cxf</groupId>
+	    <artifactId>cxf-rt-transports-http</artifactId>
+	    <version>3.3.1</version>
+	</dependency>
+	
+	<dependency>
+	        <groupId>fr.afcepf.al35</groupId>
+	        <artifactId>serverSoap-itf</artifactId>
+	        <version>0.0.1-SNAPSHOT</version>
+	    </dependency>
+		
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>

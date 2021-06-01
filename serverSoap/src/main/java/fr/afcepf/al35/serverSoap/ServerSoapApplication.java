@@ -8,7 +8,7 @@ public class ServerSoapApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServerSoapApplication.class, args);
-		System.out.println("http://localhost:8484/serverSoap");
+		System.out.println("http://localhost:8484/serverSoap/index.html");
 	}
 
 }

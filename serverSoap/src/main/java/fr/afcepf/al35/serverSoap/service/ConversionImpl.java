@@ -26,7 +26,7 @@ public class ConversionImpl implements Conversion{
 
 	@Override
 	public String getDev() {
-		return "Didier , formteur fou";
+		return "Didier , formateur fou";
 	}
 
 }

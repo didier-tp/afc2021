@@ -2,6 +2,7 @@ package fr.afcepf.al35.tp.web.mvc;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -9,8 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import fr.afcepf.al35.tp.service.ConversionServiceDelegate;
+
 @Controller 
 public class AppCtrl {
+	
+	@Autowired
+	private ConversionServiceDelegate conversionServiceDelegate;
 	
 	@ModelAttribute("idSession")
 	public String idSession(HttpSession session) {
@@ -21,6 +27,15 @@ public class AppCtrl {
 	String toWelcome(Model model) {
 		model.addAttribute("message", "bienvenu(e)");
 		model.addAttribute("title","welcome");
+		
+		double montantDollar = 
+				conversionServiceDelegate.convertir(100.0, "EUR", "USD");
+		model.addAttribute("montantDollar",montantDollar);
+		
+		String dev = 
+				conversionServiceDelegate.getDev();
+		model.addAttribute("dev",dev);
+		
 	    return "welcome"; 
 	}
 	
