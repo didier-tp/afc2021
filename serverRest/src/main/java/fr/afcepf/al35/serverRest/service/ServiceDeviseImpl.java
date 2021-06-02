@@ -39,7 +39,8 @@ public class ServiceDeviseImpl implements ServiceDevise{
 
 	@Override
 	public Devise rechercherDeviseParCode(String code) {
-		return daoDevise.findById(code).get();
+		return daoDevise.findById(code).get();//retourne exception si Optional empty
+		                             //.orElse(null)
 	}
 
 	@Override
