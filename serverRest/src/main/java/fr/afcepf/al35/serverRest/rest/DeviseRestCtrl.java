@@ -2,6 +2,8 @@ package fr.afcepf.al35.serverRest.rest;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -76,7 +78,7 @@ public class DeviseRestCtrl {
 	// dans la partie invisible body de la requete HTTP
 	// et avec Content-Type = application/json dans le header de la requête HTTP
 	@PostMapping("")
-	public Devise postNewDevise(@RequestBody Devise d) {
+	public Devise postNewDevise(@Valid @RequestBody Devise d) {
 		
 			Devise deviseSauvegardee = serviceDevise.createDevise(d);
 			return deviseSauvegardee;
