@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.afcepf.al35.serverRest.dao.DaoDevise;
 import fr.afcepf.al35.serverRest.entity.Devise;
+import fr.afcepf.al35.serverRest.exception.MyAlreadyExistingEntityException;
 import fr.afcepf.al35.serverRest.exception.MyEntityNotFoundException;
 
 
@@ -51,23 +52,26 @@ public class ServiceDeviseImpl implements ServiceDevise{
 
 	@Override
 	public Devise createDevise(Devise d) {
-		Devise existingDeviseWithSamecode = daoDevise.findById(d.getCode()).orElse(null);
-		if(existingDeviseWithSamecode==null) {
-		    daoDevise.save(d);
-		     return d;
-		}else {
-			throw new RuntimeException("une devise existe deja avec le code="+d.getCode());
-		}
+		if(daoDevise.existsById(d.getCode()))
+			throw new MyAlreadyExistingEntityException("devise déjà existante avec code="+d.getCode());
+		else return  daoDevise.save(d);
 	}
 
 	@Override
 	public void updateDevise(Devise d) {
-		daoDevise.save(d);
+		if(daoDevise.existsById(d.getCode()))
+			daoDevise.save(d);
+		else
+			throw new MyEntityNotFoundException("devise inexistante (pas modifiable) pour code="+d.getCode());
 	}
 
 	@Override
 	public void deleteDevise(String code) {
-		daoDevise.deleteById(code);
+		if(daoDevise.existsById(code))
+		    daoDevise.deleteById(code);
+		else
+			throw new MyEntityNotFoundException("devise inexistante (pas supprimable) pour code="+code);
+			
 	}
 
 }
