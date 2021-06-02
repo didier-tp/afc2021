@@ -25,11 +25,14 @@ public class DeviseRestCtrl {
 	
 	//localhost:8585/serverRest/devise-api-rest/devise/EUR
 	/*
+	 //V1 
 	@GetMapping("/{codeDevise}")
 	public Devise getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		return serviceDevise.rechercherDeviseParCode(codeDevise);
 	}*/
 	
+	/*
+	//V2 :
 	@GetMapping("/{codeDevise}")
 	public ResponseEntity<?> getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		try {
@@ -40,7 +43,16 @@ public class DeviseRestCtrl {
 			return new ResponseEntity<Erreur>(new Erreur("devise pas trouvée en base pour code="+codeDevise),
 					                          HttpStatus.NOT_FOUND);
 		}
+	}*/
+	
+	//V3 = code de V1 mais avec en plus
+	//rechercherDeviseParCode() qui retourne MyEntityNotFoundException
+	//associée à NOT_FOUND/404 via @ResponseStatus
+	@GetMapping("/{codeDevise}")
+	public Devise getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
+		return serviceDevise.rechercherDeviseParCode(codeDevise);
 	}
+	
 	
 	//localhost:8585/serverRest/devise-api-rest/devise
 	//localhost:8585/serverRest/devise-api-rest/devise?changeMini=1.05

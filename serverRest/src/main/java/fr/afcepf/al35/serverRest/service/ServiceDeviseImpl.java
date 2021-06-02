@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.afcepf.al35.serverRest.dao.DaoDevise;
 import fr.afcepf.al35.serverRest.entity.Devise;
+import fr.afcepf.al35.serverRest.exception.MyEntityNotFoundException;
 
 
 @Service //ou @Stateless sur projet EJB
@@ -38,9 +39,14 @@ public class ServiceDeviseImpl implements ServiceDevise{
 	}
 
 	@Override
-	public Devise rechercherDeviseParCode(String code) {
-		return daoDevise.findById(code).get();//retourne exception si Optional empty
-		                             //.orElse(null)
+	public Devise rechercherDeviseParCode(String code) throws MyEntityNotFoundException{
+		try {
+			return daoDevise.findById(code).get();//retourne exception si Optional empty
+			                             //.orElse(null)
+		} catch (Exception e) {
+			//e.printStackTrace();
+			throw new MyEntityNotFoundException("devise pas trouvée pour code="+code);
+		}
 	}
 
 	@Override
