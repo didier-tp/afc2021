@@ -51,8 +51,13 @@ public class ServiceDeviseImpl implements ServiceDevise{
 
 	@Override
 	public Devise createDevise(Devise d) {
-		daoDevise.save(d);
-		return d;
+		Devise existingDeviseWithSamecode = daoDevise.findById(d.getCode()).orElse(null);
+		if(existingDeviseWithSamecode==null) {
+		    daoDevise.save(d);
+		     return d;
+		}else {
+			throw new RuntimeException("une devise existe deja avec le code="+d.getCode());
+		}
 	}
 
 	@Override
