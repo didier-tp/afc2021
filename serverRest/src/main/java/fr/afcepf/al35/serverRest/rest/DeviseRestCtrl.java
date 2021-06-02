@@ -32,13 +32,19 @@ public class DeviseRestCtrl {
 	@GetMapping("")
 	public List<Devise> getDevisesByCriteria(
 			  @RequestParam(value="changeMini",required=false) Double changeMini) {
+		/*
 		List<Devise> devises = serviceDevise.rechercherDevises();
 		if(changeMini!=null) {
 			devises= 
 					devises.stream()
 			       .filter((d)->d.getChange()>1.05)
 			       .collect(Collectors.toList());
-		}
+		}*/
+		List<Devise> devises = null;
+		if(changeMini!=null)
+			devises= serviceDevise.rechercherDevisesParChangeMini(changeMini);
+		else
+			devises = serviceDevise.rechercherDevises();
 		return devises;
 	}
 	

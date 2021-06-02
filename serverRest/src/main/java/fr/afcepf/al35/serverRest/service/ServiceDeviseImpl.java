@@ -31,6 +31,11 @@ public class ServiceDeviseImpl implements ServiceDevise{
 	public List<Devise> rechercherDevises() {
 		return daoDevise.findAll();
 	}
+	
+	@Override
+	public List<Devise> rechercherDevisesParChangeMini(Double changeMini) {
+		return daoDevise.findByChangeGreaterThanEqual(changeMini);
+	}
 
 	@Override
 	public Devise rechercherDeviseParCode(String code) {

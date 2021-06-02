@@ -7,6 +7,7 @@ import fr.afcepf.al35.serverRest.entity.Devise;
 public interface ServiceDevise {
    List<Devise> rechercherDevises();
    Devise rechercherDeviseParCode(String code);
+   List<Devise> rechercherDevisesParChangeMini(Double changeMini);
    double convertir(double montant, 
 		            String codeDeviseSource, 
 		            String codeDeviseCible);
