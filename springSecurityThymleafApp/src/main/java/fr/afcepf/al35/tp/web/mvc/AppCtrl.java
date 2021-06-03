@@ -1,5 +1,7 @@
 package fr.afcepf.al35.tp.web.mvc;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +12,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import fr.afcepf.al35.tp.dto.Devise;
 import fr.afcepf.al35.tp.service.ConversionServiceDelegate;
+import fr.afcepf.al35.tp.service.DeviseServiceDelegate;
 
 @Controller 
 public class AppCtrl {
 	
 	@Autowired
 	private ConversionServiceDelegate conversionServiceDelegate;
+	
+	@Autowired
+	private DeviseServiceDelegate deviseServiceDelegate;
 	
 	@ModelAttribute("idSession")
 	public String idSession(HttpSession session) {
@@ -28,6 +35,9 @@ public class AppCtrl {
 		model.addAttribute("message", "bienvenu(e)");
 		model.addAttribute("title","welcome");
 		
+		try {
+		//Essai de conversion via WS SOAP
+		//si le serveur serverSoap est démarré
 		double montantDollar = 
 				conversionServiceDelegate.convertir(100.0, "EUR", "USD");
 		model.addAttribute("montantDollar",montantDollar);
@@ -35,6 +45,23 @@ public class AppCtrl {
 		String dev = 
 				conversionServiceDelegate.getDev();
 		model.addAttribute("dev",dev);
+		}catch(Exception ex) {
+			System.err.println("pas de ws saop accessible");
+		}
+		
+		try {
+			//essai de conversion avec WS REST
+			//si le serveur restServer est démarré
+			double montantDollar = 
+					deviseServiceDelegate.convertir(100.0, "EUR", "USD");
+			model.addAttribute("montantDollar",montantDollar);
+			
+			List<Devise> devises = deviseServiceDelegate.listeDevises();
+			model.addAttribute("dev",devises.toString());
+		} catch (Exception e) {
+			System.err.println("pas de ws rest accessible");
+			//e.printStackTrace();
+		}
 		
 	    return "welcome"; 
 	}

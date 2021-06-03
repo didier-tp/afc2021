@@ -29,15 +29,21 @@ public class ConversionServiceDelegate implements Conversion {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		QName SERVICE_NAME = new QName("http://service.serverSoap.al35.afcepf.fr/",
-				                       "ConversionImplService");
-		javax.xml.ws.Service service = 
-				 javax.xml.ws.Service.create(wsdlUrl,SERVICE_NAME);
-		//NB: Conversion.java doit comporter @WebService , @WebParam , ...
-		//on a recupérer ça via la dépendance vers serverSoap-itf
-		//ou bien via wsimport ....?wsdl si jdk 1.6 ou 1.7 ou 1.8
-		//ou bien wsdl2java de csf ou autre
-		this.proxyConversion = service.getPort(Conversion.class);
+		
+		try {
+			QName SERVICE_NAME = new QName("http://service.serverSoap.al35.afcepf.fr/",
+					                       "ConversionImplService");
+			javax.xml.ws.Service service = 
+					 javax.xml.ws.Service.create(wsdlUrl,SERVICE_NAME);
+			//NB: Conversion.java doit comporter @WebService , @WebParam , ...
+			//on a recupérer ça via la dépendance vers serverSoap-itf
+			//ou bien via wsimport ....?wsdl si jdk 1.6 ou 1.7 ou 1.8
+			//ou bien wsdl2java de csf ou autre
+			this.proxyConversion = service.getPort(Conversion.class);
+		} catch (Exception e) {
+			//e.printStackTrace();
+			System.err.println("soap pas accessible " + e.getMessage());
+		}
 	}
 
 	@Override
