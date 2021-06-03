@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>appelAjx</title>
+<script src="js/my_ajax_util.js"></script>
+<script src="js/conversion-ajax.js"></script>
+</head>
+<body>
+    <h3>conversion de devise</h3>
+    montant: <input type="text" value="100" id="txtMontant" /> <br/>
+    deviseSource: <input type="text" value="EUR" id="txtDeviseSource" /> (ex: EUR)<br/>
+    deviseCible: <input type="text" value="USD" id="txtDeviseCible" /> (ex: USD)<br/>
+    <input type="button" value="conversion" onclick="doConversion()" /><br/>
+    montantConverti : <span id="spanRes"></span>
+    
+    <hr/>
+     <h3>ajout (post) de nouvelle devise</h3>
+    code: <input type="text" value="M1" id="txtCode" /> <br/>
+    nom: <input type="text" value="Monnaie1" id="txtNom" /> <br/>
+    change: <input type="number" value="2.56" id="txtChange" /><br/>
+    <input type="button" value="ajout (post) " onclick="doAjout()" /><br/>
+    message : <span id="spanMessage"></span>
+    
+    
+</body>
+</html>
