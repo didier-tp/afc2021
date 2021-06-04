@@ -5,7 +5,7 @@ function doConversion(){
 	var deviseCible = document.getElementById("txtDeviseCible").value;
 	console.log("doConversion() appelee avec montant= " + montant);
 	
-	var url = "./devise-api-rest/devise/conversion?amount="
+	var url = "./devise-api-rest/public/devise/conversion?amount="
 	            +montant+"&source="+deviseSource+
                 "&target="+deviseCible;
 
@@ -32,7 +32,7 @@ function doAjout(){
 	var nom = document.getElementById("txtNom").value;
 
 	
-	var url = "./devise-api-rest/devise"
+	var url = "./devise-api-rest/private/devise"
 
     var callback = function(data){
 	   console.log("sucess data=" + data);

@@ -25,23 +25,23 @@ import fr.afcepf.al35.serverRest.service.ServiceDevise;
 @RestController
 //@CrossOrigin(origins = "*")
 @CrossOrigin(origins = { "http://localhost:3000" , "http://localhost:4200" })
-@RequestMapping(value="/devise-api-rest/devise" , headers="Accept=application/json")
+@RequestMapping(value="/devise-api-rest" , headers="Accept=application/json")
 public class DeviseRestCtrl {
 	
 	@Autowired
 	private ServiceDevise serviceDevise;
 	
-	//localhost:8585/serverRest/devise-api-rest/devise/EUR
+	//localhost:8585/serverRest/devise-api-rest/public/devise/EUR
 	/*
 	 //V1 
-	@GetMapping("/{codeDevise}")
+	@GetMapping("/public/devise//{codeDevise}")
 	public Devise getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		return serviceDevise.rechercherDeviseParCode(codeDevise);
 	}*/
 	
 	/*
 	//V2 :
-	@GetMapping("/{codeDevise}")
+	@GetMapping("/public/devise//{codeDevise}")
 	public ResponseEntity<?> getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		try {
 			Devise dev = serviceDevise.rechercherDeviseParCode(codeDevise);
@@ -56,7 +56,7 @@ public class DeviseRestCtrl {
 	//V3 = code de V1 mais avec en plus
 	//rechercherDeviseParCode() qui retourne MyEntityNotFoundException
 	//associée à NOT_FOUND/404 via @ResponseStatus
-	@GetMapping("/{codeDevise}")
+	@GetMapping("/public/devise/{codeDevise}")
 	public Devise getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		return serviceDevise.rechercherDeviseParCode(codeDevise);
 	}
@@ -75,40 +75,40 @@ public class DeviseRestCtrl {
 	}*/
 	
 	//V2 avec exception personnalisées et @ResponseStatus
-	//URL = localhost:8585/serverRest/devise-api-rest/devise 
+	//URL = localhost:8585/serverRest/devise-api-rest/private/devise 
 	// a appeler en mode POST via POSTMAN ou autre
 	// et avec { "code" : "M1",	"nom" : "monnaie1",	"change" : 345.67 } 
 	// dans la partie invisible body de la requete HTTP
 	// et avec Content-Type = application/json dans le header de la requête HTTP
-	@PostMapping("")
+	@PostMapping("/private/devise")
 	public Devise postNewDevise(@Valid @RequestBody Devise d) {
 		
 			Devise deviseSauvegardee = serviceDevise.createDevise(d);
 			return deviseSauvegardee;
 	}
 	
-	//URL = localhost:8585/serverRest/devise-api-rest/devise 
+	//URL = localhost:8585/serverRest/devise-api-rest/private/devise 
 	// a appeler en mode PUT via POSTMAN ou autre
 	// et avec { "code" : "M1",	"nom" : "monnaie1Bis",	"change" : 675.67 } 
 	// dans la partie invisible body de la requete HTTP
 	// et avec Content-Type = application/json dans le header de la requête HTTP
-	@PutMapping("")
+	@PutMapping("/private/devise")
 	public Devise updateDevise(@RequestBody Devise d) {
 			serviceDevise.updateDevise(d);
 			return d;//en tant que devise sauvegardée (mise à jour)
 	}
 	
-	////localhost:8585/serverRest/devise-api-rest/devise/m1 (DELETE)
-	@DeleteMapping("/{codeDevise}")
+	////localhost:8585/serverRest/devise-api-rest/private/devise/m1 (DELETE)
+	@DeleteMapping("/private/devise/{codeDevise}")
 	public ResponseEntity<?> deleteDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		serviceDevise.deleteDevise(codeDevise);
 		return new ResponseEntity<Object>(null,HttpStatus.OK);
 	}
 	
 	
-	//localhost:8585/serverRest/devise-api-rest/devise
-	//localhost:8585/serverRest/devise-api-rest/devise?changeMini=1.05
-	@GetMapping("")
+	//localhost:8585/serverRest/devise-api-rest/public/devise
+	//localhost:8585/serverRest/devise-api-rest/public/devise?changeMini=1.05
+	@GetMapping("/public/devise")
 	public List<Devise> getDevisesByCriteria(
 			  @RequestParam(value="changeMini",required=false) Double changeMini) {
 		/*
@@ -127,8 +127,8 @@ public class DeviseRestCtrl {
 		return devises;
 	}
 	
-	//localhost:8585/serverRest/devise-api-rest/devise/conversion?amount=200&source=EUR&target=USD
-		@GetMapping("/conversion")
+	//localhost:8585/serverRest/devise-api-rest/public/devise/conversion?amount=200&source=EUR&target=USD
+		@GetMapping("/public/devise/conversion")
 		public ResConversion  getResConversion(
 				@RequestParam(value="amount") Double amount,
 				@RequestParam(value="source") String source,
