@@ -1,3 +1,13 @@
+function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return jsonPayload;
+    //return JSON.parse(jsonPayload);
+};
+
 function doConversion(){
 	
 	var montant = Number(document.getElementById("txtMontant").value);
@@ -35,7 +45,7 @@ function doAjout(){
 	var url = "./devise-api-rest/private/devise"
 
     var callback = function(data){
-	   console.log("sucess data=" + data);
+	   console.log("success data=" + data);
        var message ="donnees sauvegardees cote serveur=" + data;
        document.getElementById("spanMessage").innerHTML="<b>"+message+"</b>";
     }
@@ -49,6 +59,34 @@ function doAjout(){
     //var jsDeviseObject = {code : code , nom ; nom , change : change };
     var jsDeviseObject = {code , nom , change };
     var jsonData = JSON.stringify(jsDeviseObject);
+
+	makeAjaxPostRequest(url,jsonData,callback,errCallback) ;
+	
+}
+
+function doLogin(){
+
+	var username = document.getElementById("txtUsername").value;
+	var password = document.getElementById("txtPassword").value;
+
+	
+	var url = "./devise-api-rest/public/login"
+
+    var callback = function(data){
+	   console.log("success data=" + data);
+       var jwtToken = (JSON.parse(data)).token;
+       var message ="reponse login=" + data + " payload token=" + parseJwt(jwtToken);
+       document.getElementById("spanMessageLogin").innerHTML="<b>"+message+"</b>";
+    }
+
+    var errCallback = function(data){
+	   console.log("erreur=" + data);
+       var message = (JSON.parse(data)).message;
+       document.getElementById("spanMessageLogin").innerHTML="<b>"+message+"</b>";
+    }
+
+    var jsLoginRequestObject = {username , password};
+    var jsonData = JSON.stringify(jsLoginRequestObject);
 
 	makeAjaxPostRequest(url,jsonData,callback,errCallback) ;
 	

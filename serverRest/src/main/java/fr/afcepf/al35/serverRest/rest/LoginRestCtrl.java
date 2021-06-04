@@ -28,7 +28,7 @@ public class LoginRestCtrl {
 	@Autowired
 	private JwtTokenProvider jwtTokenProvider;
 
-	//http://localhost:8383/springBootWs/devise-api/public/login
+	//http://localhost:8585/serverRest/devise-api-rest/public/login
 	//avec { "username" : "user1" , "password" : "pwd1" }
 	//en retour { "message" :  "..." , "token" ; "..." , ...}
 	@PostMapping("")

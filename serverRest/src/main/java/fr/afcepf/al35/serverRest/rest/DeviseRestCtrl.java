@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -81,6 +82,7 @@ public class DeviseRestCtrl {
 	// dans la partie invisible body de la requete HTTP
 	// et avec Content-Type = application/json dans le header de la requête HTTP
 	@PostMapping("/private/devise")
+	//@PreAuthorize("hasRole('ADMIN')")
 	public Devise postNewDevise(@Valid @RequestBody Devise d) {
 		
 			Devise deviseSauvegardee = serviceDevise.createDevise(d);
@@ -92,6 +94,7 @@ public class DeviseRestCtrl {
 	// et avec { "code" : "M1",	"nom" : "monnaie1Bis",	"change" : 675.67 } 
 	// dans la partie invisible body de la requete HTTP
 	// et avec Content-Type = application/json dans le header de la requête HTTP
+	//@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/private/devise")
 	public Devise updateDevise(@RequestBody Devise d) {
 			serviceDevise.updateDevise(d);
@@ -99,6 +102,7 @@ public class DeviseRestCtrl {
 	}
 	
 	////localhost:8585/serverRest/devise-api-rest/private/devise/m1 (DELETE)
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/private/devise/{codeDevise}")
 	public ResponseEntity<?> deleteDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		serviceDevise.deleteDevise(codeDevise);
