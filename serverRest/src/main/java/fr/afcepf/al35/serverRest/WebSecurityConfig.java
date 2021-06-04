@@ -51,9 +51,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		.antMatchers("/", "/favicon.ico", "/**/*.png", "/**/*.gif", "/**/*.svg",
 		"/**/*.jpg", "/**/*.html", "/**/*.css", "/**/*.js").permitAll()
-		.antMatchers(HttpMethod.POST,"/auth/**").permitAll()
-		.antMatchers("/xyz-api/public/**").permitAll()
-		.antMatchers("/xyz-api/private/**").authenticated()
+		.antMatchers(HttpMethod.POST,"/devise-api-rest/public/login").permitAll()
+		.antMatchers("/devise-api-rest/public/**").permitAll()
+		.antMatchers("/devise-api-rest/private/**").authenticated()
 		.and().cors() //enable CORS (avec @CrossOrigin sur class @RestController)
 		.and().csrf().disable()
 		// If the user is not authenticated, returns 401
