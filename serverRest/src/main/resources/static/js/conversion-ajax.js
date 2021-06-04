@@ -1,3 +1,6 @@
+
+//var tokenGlobal; 
+
 function parseJwt (token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -60,7 +63,9 @@ function doAjout(){
     var jsDeviseObject = {code , nom , change };
     var jsonData = JSON.stringify(jsDeviseObject);
 
-	makeAjaxPostRequest(url,jsonData,callback,errCallback) ;
+    var token = sessionStorage.getItem("token");
+    makeAjaxPostRequest(url,jsonData,callback,errCallback,token) ;
+	//makeAjaxPostRequest(url,jsonData,callback,errCallback,tokenGlobal) ;
 	
 }
 
@@ -75,6 +80,8 @@ function doLogin(){
     var callback = function(data){
 	   console.log("success data=" + data);
        var jwtToken = (JSON.parse(data)).token;
+       //tokenGlobal=jwtToken;
+       sessionStorage.setItem("token",jwtToken);
        var message ="reponse login=" + data + " payload token=" + parseJwt(jwtToken);
        document.getElementById("spanMessageLogin").innerHTML="<b>"+message+"</b>";
     }

@@ -27,11 +27,14 @@ function makeAjaxDeleteRequest(url,callback,errCallback) {
 	xhr.send(null);
 }
 
-function makeAjaxPostRequest(url,jsonData,callback,errCallback) {
+function makeAjaxPostRequest(url,jsonData,callback,errCallback,token) {
 	var xhr = new XMLHttpRequest();
 	registerCallbacks(xhr,callback,errCallback);
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
+	if(token){
+		xhr.setRequestHeader("Authorization", "Bearer " + token);
+	}
 	xhr.send(jsonData);
 }
 
