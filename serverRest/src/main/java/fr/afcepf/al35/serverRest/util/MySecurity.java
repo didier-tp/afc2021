@@ -1,4 +1,4 @@
-package fr.afcepf.al35.serverRest;
+package fr.afcepf.al35.serverRest.util;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
