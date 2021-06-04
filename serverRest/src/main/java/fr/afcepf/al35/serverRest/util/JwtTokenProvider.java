@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,8 +33,8 @@ public class JwtTokenProvider {
 
     public String generateToken(Authentication authentication) {
         UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
-        //List<String> roleNameList=MySpringSecurityUtil.roleNameList(authentication);
-        return buildToken(userPrincipal.getUsername(),null/*roleNameList*/);
+        List<String> roleNameList=MySecurity.roleNameList(authentication);
+        return buildToken(userPrincipal.getUsername(),/*null*/roleNameList);
     }
         
     public String buildToken(String userNameOrId,List<String> roleNameList) {
@@ -50,7 +51,7 @@ public class JwtTokenProvider {
     	Claims jwtClaims = JwtUtil.extractClaimsFromJWT(token, jwtSecret);
         String username = jwtClaims.getSubject();
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        /*
+       
         Object rolesInClaim = jwtClaims.get(JwtUtil.ROLES_AUTHORITIES_CLAIM); 
 		if(rolesInClaim!=null){
 			String rolesInClaimAsString = (String) rolesInClaim.toString();
@@ -63,14 +64,14 @@ public class JwtTokenProvider {
 		        	logger.debug("in jwt claims, found roleName="+roleName);
 		        	String springSecurityRoleName = roleName;
 		        	//ou bien springSecurityRoleName = "ROLE_" + roleName; si besoin :
-		        	if(!(springSecurityRoleName.startsWith(MySpringSecurityUtil.DEFAULT_SPRING_SECURITY_ROLE_PREFIX))){
-		        		springSecurityRoleName=MySpringSecurityUtil.DEFAULT_SPRING_SECURITY_ROLE_PREFIX + roleName; 
+		        	if(!(springSecurityRoleName.startsWith(MySecurity.DEFAULT_SPRING_SECURITY_ROLE_PREFIX))){
+		        		springSecurityRoleName=MySecurity.DEFAULT_SPRING_SECURITY_ROLE_PREFIX + roleName; 
 		        	}
 					authorities.add(new SimpleGrantedAuthority(springSecurityRoleName));
 				}
 			}
 		}
-		*/
+		
 		// User(username, password, enabled, accountNonExpired, credentialsNotExpired, accountNonLocked, authorities)
 		User user = new User(username, "unknown_in_jwt_claims_but_already_check", true /*account.isEnabled()*/, true, true, true, authorities);
 		return user;

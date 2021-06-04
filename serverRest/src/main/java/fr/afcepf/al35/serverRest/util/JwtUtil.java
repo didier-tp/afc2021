@@ -45,7 +45,7 @@ public class JwtUtil {
 	        		.setIssuer(MY_DEFAULT_JWT_ISSUER)
 	                .setSubject(userNameOrId)
 	                .setIssuedAt(new Date())
-	                //.claim(ROLES_AUTHORITIES_CLAIM, roleNameList.toString())
+	                .claim(ROLES_AUTHORITIES_CLAIM, roleNameList.toString())
 	                .setExpiration(expiryDate)
 	                .signWith(SignatureAlgorithm.HS512, jwtSecret)
 	                .compact();
