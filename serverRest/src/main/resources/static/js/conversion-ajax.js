@@ -89,6 +89,7 @@ function doLogin(){
     var errCallback = function(data){
 	   console.log("erreur=" + data);
        var message = (JSON.parse(data)).message;
+       sessionStorage.setItem("token",null);
        document.getElementById("spanMessageLogin").innerHTML="<b>"+message+"</b>";
     }
 
