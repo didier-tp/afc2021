@@ -19,6 +19,10 @@ import fr.afcepf.al35.tp.dto.ResConversion;
 @Component //ou bien @Service
 public class DeviseServiceDelegate  implements DeviseService{
 	
+	
+	//le token est ici stocké dans une variable statique (partagée en tous les utilisateurs)
+	//selon le contexte de l'application on pourra préférer 
+	//stocker le token en session (session utilisateur ) ou autre.
 	public static String token=null;
 	
 	private RestTemplate restTemplate;

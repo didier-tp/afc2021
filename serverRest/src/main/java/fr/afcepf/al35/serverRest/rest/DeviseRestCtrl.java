@@ -1,6 +1,8 @@
 package fr.afcepf.al35.serverRest.rest;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -106,7 +108,10 @@ public class DeviseRestCtrl {
 	@DeleteMapping("/private/devise/{codeDevise}")
 	public ResponseEntity<?> deleteDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		serviceDevise.deleteDevise(codeDevise);
-		return new ResponseEntity<Object>(null,HttpStatus.OK);
+		Map<String,Object> mapRes = new HashMap<>();
+		mapRes.put("message", "devise bien supprimée pour code="+codeDevise);
+		//mapRes.put(autreClef, autreValeur);
+		return new ResponseEntity<Object>(mapRes,HttpStatus.OK);
 	}
 	
 	
