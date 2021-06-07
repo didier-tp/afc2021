@@ -3,6 +3,7 @@ package fr.afcepf.al35.serverRest.init;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import fr.afcepf.al35.serverRest.dao.DaoDevise;
@@ -11,7 +12,7 @@ import fr.afcepf.al35.serverRest.entity.Devise;
 import fr.afcepf.al35.serverRest.entity.Pays;
 
 @Component
-//@Profile({"initDataSet"})
+@Profile({"initDataSet"})
 public class InitDataSet {
 	
 	@Autowired

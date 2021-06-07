@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.afcepf.al35.serverRest.dto.ResConversion;
 import fr.afcepf.al35.serverRest.entity.Devise;
 import fr.afcepf.al35.serverRest.service.ServiceDevise;
+import io.swagger.annotations.ApiParam;
 
 @RestController
 //@CrossOrigin(origins = "*")
@@ -139,9 +140,12 @@ public class DeviseRestCtrl {
 	//localhost:8585/serverRest/devise-api-rest/public/devise/conversion?amount=200&source=EUR&target=USD
 		@GetMapping("/public/devise/conversion")
 		public ResConversion  getResConversion(
-				@RequestParam(value="amount") Double amount,
-				@RequestParam(value="source") String source,
-				@RequestParam(value="target") String target) {
+				@RequestParam(value="amount")
+				@ApiParam(value = "amount to convert", example = "100") Double amount,
+				@RequestParam(value="source") 
+				@ApiParam(value = "source currency code", example = "EUR") String source,
+				@RequestParam(value="target") 
+				@ApiParam(value = "target currency code", example = "USD") String target) {
 			ResConversion resConv = new  ResConversion();
 			resConv.setAmount(amount);
 			resConv.setSource(source);

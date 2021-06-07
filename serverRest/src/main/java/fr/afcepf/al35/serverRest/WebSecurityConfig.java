@@ -22,6 +22,11 @@ import fr.afcepf.al35.serverRest.util.MyNoAuthenticationEntryPoint;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 //necessary for @PreAuthorize("hasRole('ADMIN or ...')")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	private static final String[] SWAGGER_AUTH_WHITELIST = {
+			"/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/webjars/**"
+			};
+	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
@@ -53,6 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		"/**/*.jpg", "/**/*.html", "/**/*.css", "/**/*.js").permitAll()
 		.antMatchers(HttpMethod.POST,"/devise-api-rest/public/login").permitAll()
 		.antMatchers("/devise-api-rest/public/**").permitAll()
+		.antMatchers(SWAGGER_AUTH_WHITELIST).permitAll()
 		.antMatchers("/devise-api-rest/private/**").authenticated()
 		.and().cors() //enable CORS (avec @CrossOrigin sur class @RestController)
 		.and().csrf().disable()
