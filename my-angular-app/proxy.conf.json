@@ -1,0 +1,3 @@
+{ "/devise-api-rest" : { "secure" : "false" ,
+    "target" : "http://localhost:8585/serverRest" }
+}

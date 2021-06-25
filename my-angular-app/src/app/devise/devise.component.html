@@ -1,0 +1,12 @@
+<h3>Recherche de devise par code (backend springBoot/H2)</h3>
+
+<label>codeDevise:</label><input type="text" [(ngModel)]="code" /> (ex: EUR ou USD)<br/>
+<button (click)="searchByCode()">search by code</button>
+<hr/>
+{{message}}
+<hr/>
+<div *ngIf="devise">
+    <label>code (pk): &nbsp; </label> <b>{{devise.code}}</b> <br/>
+    <label>nom: &nbsp;</label> <b>{{devise.nom}}</b> <br/>
+    <label>change: &nbsp;</label> <b>{{devise.change}}</b> <br/>
+</div>
