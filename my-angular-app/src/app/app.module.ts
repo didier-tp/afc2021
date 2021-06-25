@@ -10,6 +10,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { DeviseComponent } from './devise/devise.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { LoginComponent } from './login/login.component';
+import { BasicComponent } from './basic/basic.component';
+import { CalculatriceComponent } from './basic/calculatrice/calculatrice.component';
+import { TvaComponent } from './basic/tva/tva.component';
+import { XyComponent } from './basic/xy/xy.component';
+import { ZzComponent } from './basic/zz/zz.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import { LoginComponent } from './login/login.component';
     MyFooterComponent,
     WelcomeComponent,
     DeviseComponent,
-    LoginComponent
+    LoginComponent,
+    BasicComponent,
+    CalculatriceComponent,
+    TvaComponent,
+    XyComponent,
+    ZzComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+<p>basic works!</p>
+username: <input [(ngModel)]="username" /> <br/>
+<button (click)="onAction()">hello</button> <br/>
+message: <b>{{message}}</b>
+<hr/>
+<tabset>
+    <tab heading="calculatrice (v1)">
+        <app-calc></app-calc>
+    </tab>
+    <tab heading="calculatrice (v2)">
+       <app-calculatrice></app-calculatrice>
+   </tab>
+   <tab heading="calcul tva">
+       <app-tva></app-tva>
+    </tab>
+</tabset>
+
+<app-xy></app-xy>
+<app-zz></app-zz>
