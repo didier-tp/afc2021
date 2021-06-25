@@ -9,6 +9,7 @@ import { MyFooterComponent } from './my-footer/my-footer.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DeviseComponent } from './devise/devise.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     MyHeaderComponent,
     MyFooterComponent,
     WelcomeComponent,
-    DeviseComponent
+    DeviseComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

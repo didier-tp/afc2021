@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Devise } from '../common/data/devise';
 import { DeviseService } from '../common/service/devise.service';
 
+
 @Component({
   selector: 'app-devise',
   templateUrl: './devise.component.html',
