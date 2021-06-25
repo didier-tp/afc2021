@@ -14,10 +14,14 @@ export class DeviseComponent implements OnInit {
   devise : Devise | null = null;
   message ="";
 
-  constructor(private deviseService : DeviseService) { }
+  montant : number = 200;
+  codeDeviseSource : string = "EUR";
+  codeDeviseCible : string = "USD";
+  montantConverti : number = 0;
 
-  ngOnInit(): void {
-  }
+  listeDevises! : Devise[]; //à choisir dans liste déroulante.
+
+  constructor(private deviseService : DeviseService) { }
 
   searchByCode(){
     this.devise = null;
@@ -26,5 +30,45 @@ export class DeviseComponent implements OnInit {
         error : (error)=> { console.log(error); this.message ="erreur: " + error.message}
       });
   }
+
+  onConvertir(){
+    console.log("debut de onConvertir")
+    this.deviseService.convertir$(this.montant,
+                                  this.codeDeviseSource,
+                                  this.codeDeviseCible)
+            .subscribe({
+                next : (res :number) => { this.montantConverti = res;
+                         console.log("resultat obtenu en différé")} ,
+                error : (err) => { console.log("error:"+err)}
+               });
+    console.log("suite immédiate (sans attente) de onConvertir");
+    //Attention : sur cette ligne, le résultat n'est 
+    // à ce stade pas encore connu car appel asynchrone
+    // non bloquant et réponse ultérieure via callback
+}
+
+
+initListeDevises(tabDevises : Devise[]){
+this.listeDevises = tabDevises;
+if(tabDevises && tabDevises.length > 0){
+  this.codeDeviseSource = tabDevises[0].code; //valeur par défaut
+  this.codeDeviseCible = tabDevises[0].code; //valeur par défaut
+}
+}
+
+//ngOnInit() est automatiquement appelée 
+//par le framework Angular après le constructeur
+//et après la prise en compte des injections 
+//et des éventuels @Input
+ngOnInit(): void {
+this.deviseService.getAllDevises$()
+     .subscribe({
+        next: (tabDev : Devise[])=>{ 
+                this.initListeDevises(tabDev); },
+        error: (err) => { console.log("error:"+err)}
+     });
+}
+
+  
 
 }

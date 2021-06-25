@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MyHeaderComponent } from './my-header/my-header.component';
@@ -15,6 +15,8 @@ import { CalculatriceComponent } from './basic/calculatrice/calculatrice.compone
 import { TvaComponent } from './basic/tva/tva.component';
 import { XyComponent } from './basic/xy/xy.component';
 import { ZzComponent } from './basic/zz/zz.component';
+import { AdminDeviseComponent } from './admin-devise/admin-devise.component';
+import { MyAuthInterceptor } from './common/interceptor/my-auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { ZzComponent } from './basic/zz/zz.component';
     MyFooterComponent,
     WelcomeComponent,
     DeviseComponent,
+    AdminDeviseComponent,
     LoginComponent,
     BasicComponent,
     CalculatriceComponent,
@@ -37,7 +40,13 @@ import { ZzComponent } from './basic/zz/zz.component';
     HttpClientModule,
     TabsModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyAuthInterceptor,
+      multi: true
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
