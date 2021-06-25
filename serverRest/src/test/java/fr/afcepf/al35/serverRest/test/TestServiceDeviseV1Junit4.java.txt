@@ -1,0 +1,42 @@
+package fr.afcepf.al35.serverRest.test;
+
+import java.util.List;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import fr.afcepf.al35.serverRest.ServerRestApplication;
+import fr.afcepf.al35.serverRest.entity.Devise;
+import fr.afcepf.al35.serverRest.service.ServiceDevise;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes= {ServerRestApplication.class})
+//@ActiveProfiles("embeddedDb")
+public class TestServiceDeviseV1Junit4 {
+	
+	@Autowired
+	private ServiceDevise serviceDevise; //à tester
+	
+	public void init() {
+		serviceDevise.createDevise(new Devise("EUR","Euro",1.0));
+		serviceDevise.createDevise(new Devise("USD","Dollar",1.1));
+		serviceDevise.createDevise(new Devise("GBP","Livre",0.9));
+		serviceDevise.createDevise(new Devise("JPY","Yen",123.6));
+	}
+	
+	@Test
+	public void testRechercherDevises() {
+		init();
+		List<Devise> listeDevises = serviceDevise.rechercherDevises();
+		System.out.println("listeDevises="+listeDevises);
+		Assert.assertTrue(listeDevises.size()>=4);
+	}
+	
+	
+
+}

@@ -20,7 +20,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Getter @Setter @ToString @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor
 @Table(name="devise")
 public class Devise {
 	@Id
@@ -45,6 +45,14 @@ public class Devise {
 		this.nom = nom;
 		this.change = change;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Devise [code=" + code + ", nom=" + nom + ", change=" + change + "]";
+	}
+	
+	
 	
 	
 
