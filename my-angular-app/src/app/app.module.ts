@@ -8,6 +8,7 @@ import { MyHeaderComponent } from './my-header/my-header.component';
 import { MyFooterComponent } from './my-footer/my-footer.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DeviseComponent } from './devise/devise.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DeviseComponent } from './devise/devise.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    TabsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
