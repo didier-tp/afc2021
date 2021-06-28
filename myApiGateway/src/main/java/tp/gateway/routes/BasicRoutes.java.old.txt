@@ -1,0 +1,28 @@
+package tp.gateway.routes;
+
+import org.springframework.cloud.gateway.route.RouteLocator;
+import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class BasicRoutes {
+
+	@Bean
+	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
+	    return builder.routes()
+	        .route(p -> p
+	            .path("/devise-api-rest/public/**")
+	            .filters(f -> f.prefixPath("/serverRest"))
+	            .uri("http://localhost:8585"))
+	        .build();
+	}
+	
+	/*
+	with just 
+	server:
+      port: 9999
+    in application.yml
+	 */
+	
+}

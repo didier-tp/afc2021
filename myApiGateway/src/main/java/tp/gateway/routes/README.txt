@@ -1,0 +1,1 @@
+classe(s) plus utile(s) si équivalent dans application.yml
