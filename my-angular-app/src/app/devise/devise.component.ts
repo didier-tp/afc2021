@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Devise } from '../common/data/devise';
 import { DeviseService } from '../common/service/devise.service';
 
@@ -21,7 +22,8 @@ export class DeviseComponent implements OnInit {
 
   listeDevises! : Devise[]; //à choisir dans liste déroulante.
 
-  constructor(private deviseService : DeviseService) { }
+  constructor(private deviseService : DeviseService,
+              private router : Router) { }
 
   searchByCode(){
     this.devise = null;
@@ -61,12 +63,25 @@ if(tabDevises && tabDevises.length > 0){
 //et après la prise en compte des injections 
 //et des éventuels @Input
 ngOnInit(): void {
+  /*
 this.deviseService.getAllDevises$()
      .subscribe({
         next: (tabDev : Devise[])=>{ 
                 this.initListeDevises(tabDev); },
         error: (err) => { console.log("error:"+err)}
+     });*/
+     this.deviseService.getAllDevises$()
+     .subscribe({
+        next: (tabDev:Devise[])=>{ this.listeDevises = tabDev; },
+        error: (err) => { console.log("error:"+err)}
      });
+}
+
+modifierDevise(){
+  //naviguer vers le composant modifDevise en passant un paramètre "codeDevise"
+  //en fin d'url:
+  //Rappel dans app-routing.module.ts : { path: 'ngr-modif-devise/:codeDevise', component: ModifDeviseComponent },
+  this.router.navigateByUrl("ngr-modif-devise/"+this.code);
 }
 
   

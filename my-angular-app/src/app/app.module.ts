@@ -17,6 +17,8 @@ import { XyComponent } from './basic/xy/xy.component';
 import { ZzComponent } from './basic/zz/zz.component';
 import { AdminDeviseComponent } from './admin-devise/admin-devise.component';
 import { MyAuthInterceptor } from './common/interceptor/my-auth.interceptor';
+import { MyCalculatriceComponent } from './my-calculatrice/my-calculatrice.component';
+import { ModifDeviseComponent } from './modif-devise/modif-devise.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { MyAuthInterceptor } from './common/interceptor/my-auth.interceptor';
     CalculatriceComponent,
     TvaComponent,
     XyComponent,
-    ZzComponent
+    ZzComponent,
+    MyCalculatriceComponent,
+    ModifDeviseComponent
   ],
   imports: [
     BrowserModule,

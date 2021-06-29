@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +29,7 @@ import io.swagger.annotations.ApiParam;
 
 @RestController
 //@CrossOrigin(origins = "*")
-@CrossOrigin(origins = { "http://localhost:3000" , "http://localhost:4200" })
+@CrossOrigin(origins = { "http://localhost:3000" , "http://localhost:4200" } , methods = { RequestMethod.GET , RequestMethod.POST , RequestMethod.PUT , RequestMethod.DELETE })
 @RequestMapping(value="/devise-api-rest" , headers="Accept=application/json")
 public class DeviseRestCtrl {
 	
