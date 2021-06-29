@@ -63,6 +63,7 @@ public class DeviseRestCtrl {
 	//associée à NOT_FOUND/404 via @ResponseStatus
 	@GetMapping("/public/devise/{codeDevise}")
 	public Devise getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
+		System.out.println("getDeviseByCode called with codeDevise="+codeDevise);
 		return serviceDevise.rechercherDeviseParCode(codeDevise);
 	}
 	
@@ -122,6 +123,8 @@ public class DeviseRestCtrl {
 	@GetMapping("/public/devise")
 	public List<Devise> getDevisesByCriteria(
 			  @RequestParam(value="changeMini",required=false) Double changeMini) {
+		
+		System.out.println("getDevisesByCriteria called with changeMini="+changeMini);
 		/*
 		List<Devise> devises = serviceDevise.rechercherDevises();
 		if(changeMini!=null) {
