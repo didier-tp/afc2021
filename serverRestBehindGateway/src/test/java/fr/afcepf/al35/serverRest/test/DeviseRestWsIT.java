@@ -8,8 +8,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.client.RestTemplate;
 
-import fr.afcepf.al35.serverRest.dto.LoginRequest;
-import fr.afcepf.al35.serverRest.dto.LoginResponse;
 import fr.afcepf.al35.serverRest.entity.Devise;
 
 /*
@@ -30,8 +28,8 @@ public class DeviseRestWsIT {
 	// (test BOITE_NOIRE)
 	@BeforeAll
 	public static void init(){
-	     //restTemplate = new RestTemplate();
-		 restTemplate = RestTemplateHeaderModifierInterceptor.initRestTemplate(); //with jwt token interceptor
+	     restTemplate = new RestTemplate();
+		 //restTemplate = RestTemplateHeaderModifierInterceptor.initRestTemplate(); //with jwt token interceptor
 	}
 	
 	@Test
@@ -56,22 +54,12 @@ public class DeviseRestWsIT {
 	}
 	
 
-	public void login(){
-		final String uri = BASE_URL + "/public/login";
-		//post/envoi:
-		LoginRequest loginRequest = new LoginRequest("user1","pwd1");
-		LoginResponse loginResponse =
-		restTemplate.postForObject(uri, loginRequest, LoginResponse.class);
-		System.out.println("loginResponse via rest: " + loginResponse.toString());
-		Assertions.assertTrue(loginResponse.getOk());
-		RestTemplateHeaderModifierInterceptor.token = loginResponse.getToken();
-	}
+	
    
 	
 	
 	@Test
 	public void testPostDeviseAfterLogin(){
-		login();
 		final String uri = BASE_URL + "/private/devise";;
 		//post/envoi:
 		Devise nouvelleDevise = new Devise("CM"+(int) (Math.random()*1000),"MonnaieXy",1.23456);

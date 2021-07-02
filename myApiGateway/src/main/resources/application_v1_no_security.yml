@@ -1,0 +1,13 @@
+server:
+  port: 9999
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: deviseApi
+        uri: http://localhost:8585
+        filters:
+        - PrefixPath=/serverRest
+        predicates:
+        - Path=/devise-api-rest/**

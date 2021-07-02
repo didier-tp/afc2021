@@ -1,1 +1,1 @@
-classe(s) plus utile(s) si équivalent dans application.yml
+classe(s) qui ne sont plus utile(s) si équivalent dans application.yml
