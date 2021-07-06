@@ -1,0 +1,87 @@
+keycloak est un serveur d'autorisation oauth2 basé sur jboss wildfly et java >=8
+il est par défaut basé sur une base H2 et dispose d'une ihm intégrée 
+pour configurer des utilisateurs
+=============
+https://github.com/keycloak/keycloak/releases/download/14.0.0/keycloak-14.0.0.zip
+=============
+bin/standalone.bat
+============
+http://localhost:8080/auth/   
+*créer un compte admin/admin ou autre lors de la premiere connection
+*se connecter en tant qu'admin
+*menu "master/add realm" "myrealm"
+Dans ce realm;
+*menu "manage/users" / "add user"
+username=myuser firstName=jean lastName=Bon
+*save
+*onglet "Credentials" de myuser
+*Password=pwd or ...
+*Temporary off
+*Save password
+*logout (as admin)
+==============
+http://localhost:8080/auth/realms/myrealm/account/#/
+*singIn
+*se connecter en tant que myuser/pwd
+*verifier/visualiser/...
+*sign out
+===============
+http://localhost:8080/auth/admin
+*Se reconnecter en tant qu'admin/admin
+*selectionner "Clients" (app)
+* Create
+* clientID=myclient , client-protocol : openid-connect
+  root url=https://www.keycloak.org/app/
+* Save
+*sign out
+=========
+test :
+* se connecter sur https://www.keycloak.org/app/ 
+* save
+*sign in
+* Hello, jean Bon
+*sign out
+
+================
+Autre client (app):
+*create
+client-id: webappclient  , client-protocol : openid-connect
+  root url=http://localhost:8081
+* Save
+
+name=WebAppClient
+access_type=confidential
+service_account_enabled=true
+authorization_enabled=true
+* Save
+---
+client-secret est à récupérer dans onglet "credentials" (ex: b45756ba-9f6c-4977-aed5-b808c6424f84)
+---
+* In "Role" tab:
+    create new "USER" role ans save
+ In "Mapper" tab:
+    add-builtIn / "username"
+    change Token Claim Name from 'preffered_username" to "sub" (advised for spring oauth2)
+    save
+----
+* Selectionner menu "Myrealm/configure/Client Scopes"
+* create resource.read Save
+* create resource.write Save
+* pour chacun de ces 2 scopes , associer role USER du client "webappclient" dans onglet "scope"
+* Selectionner menu "Myrealm/configure/Client"
+* selectionner onglet "client scopes"
+* faire passer les 2 nouveaux scopes dans "Assigned Default Client Scopes"
+---
+En retourant sur partie "Users" de la console d'admin keycloak,
+Users/ myusers / Roles Mappings
+clientRoles: webappclient
+et passer "USER" de "availables" à "assigned" puis "save".
+=======
+NB: une fois tous les reglages effectues l'url suivante permet de récupérer certains détails:
+
+http://localhost:8080/auth/realms/myrealm/.well-known/openid-configuration
+
+
+
+==========================
+https://medium.com/@bcarunmail/securing-rest-api-using-keycloak-and-spring-oauth2-6ddf3a1efcc2
