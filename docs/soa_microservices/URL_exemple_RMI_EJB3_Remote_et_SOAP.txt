@@ -1,0 +1,4 @@
+référentiel git
+https://github.com/didier-tp/jee_02_2021
+===============
+projet jeeApp (avec config complexe pour jboss)
