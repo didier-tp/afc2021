@@ -1,9 +1,11 @@
 package tp.webServices.service;
 
 import javax.jws.WebService;
+import org.springframework.stereotype.Service;
 
 import tp.webServices.dto.ResCalculTva;
 
+@Service //ou bien @Component (de Spring)
 @WebService(endpointInterface = "tp.webServices.service.CalculTva")
 public class CalculTvaImpl implements CalculTva {
 	public CalculTvaImpl() {
