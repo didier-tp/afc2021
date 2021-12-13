@@ -8,7 +8,7 @@ public class WebServicesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebServicesApplication.class, args);
-		System.out.println("http://localhost:8484/webServices");
+		System.out.println("http://localhost:8484/webServices/index.html");
 	}
 
 }
