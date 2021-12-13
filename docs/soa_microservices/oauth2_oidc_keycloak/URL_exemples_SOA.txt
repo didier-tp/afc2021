@@ -1,0 +1,6 @@
+dans https://github.com/didier-tp/afc2021 :
+___________________________________________
+projets serverSoap-itf , serverSoap
+et appels (businessDelegate) dans projet springSecurityThymeleafApp 
+(src/main/java/fr/afcepf/al35/tp/service/ConversionServiceDelegate.java 
+et methode .toWelcome de src/main/java/fr/afcepf/al35/tp/web/mvc/AppCtrl.java)

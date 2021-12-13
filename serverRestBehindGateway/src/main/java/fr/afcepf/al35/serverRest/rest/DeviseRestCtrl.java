@@ -88,7 +88,7 @@ public class DeviseRestCtrl {
 	// et avec Content-Type = application/json dans le header de la requête HTTP
 	@PostMapping("/private/devise")
 	//@PreAuthorize("hasRole('ADMIN')")
-	@PreAuthorize("#oauth2.hasScope('write')")
+	@PreAuthorize("hasAuthority('SCOPE_resource.write')")
 	public Devise postNewDevise(@Valid @RequestBody Devise d) {
 		
 			Devise deviseSauvegardee = serviceDevise.createDevise(d);
@@ -109,7 +109,7 @@ public class DeviseRestCtrl {
 	
 	////localhost:8585/serverRest/devise-api-rest/private/devise/m1 (DELETE)
 	//@PreAuthorize("hasRole('ADMIN')")
-	@PreAuthorize("#oauth2.hasScope('delete')")
+	@PreAuthorize("hasAuthority('SCOPE_resource.write')") //resource.write ici au sens write+delete
 	@DeleteMapping("/private/devise/{codeDevise}")
 	public ResponseEntity<?> deleteDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		serviceDevise.deleteDevise(codeDevise);
@@ -123,7 +123,7 @@ public class DeviseRestCtrl {
 	//localhost:8585/serverRest/devise-api-rest/public/devise
 	//localhost:8585/serverRest/devise-api-rest/public/devise?changeMini=1.05
 	@GetMapping("/public/devise")
-	//@PreAuthorize("#oauth2.hasScope('read')")
+	//@PreAuthorize("hasAuthority('SCOPE_resource.read')")
 	public List<Devise> getDevisesByCriteria(
 			  @RequestParam(value="changeMini",required=false) Double changeMini) {
 		

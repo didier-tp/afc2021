@@ -1,0 +1,43 @@
+Exemple WS_REST (nodeJs) avec securite JWT activable/désactivable
+=================================================================
+https://github.com/didier-mycontrib/tp_node_js, appli "backend-tp-api"
+lancer npm install pour téléchargement des dépendances
+démarrage simple via lancer_nodeJs_noDB.bat
+accès aux webservices: http://localhost:8282/test-ws
+
+http://localhost:8282/devise-api/public/devise
+http://localhost:8282/devise-api/public/devise?changeMini=1.1
+
+
+URL pour test via postman:
+http://localhost:8282/login-api/public/auth
+ à appeler en mode POST avec 
+{ "username" : "admin1"  , "password" : "pwdadmin1" , "roles" : "admin" }
+et 
+http://localhost:8282/devise-api/private/role_admin/devise
+à appeler en mode PUT avec
+{ "code": "JPY" , "nom" : "yen2" , "change" : 143.5 }
+
+
+Exemple oauth2/oidc:
+======================
+config serveur KeyCloak (à démarrer en premier):
+selon configuration exemple de 01_KeyCloak.pdf (avec :8989)
+---> http://localhost:8989/auth/
+
+backend java/springBoot (à démarrer en 2nd):
+https://github.com/didier-mycontrib/jee-spring-app-demo , appli "restDeviseApiOAuth2"
+---> 
+
+frontEnd angular (avec oidc) (à démarrer en dernier):
+https://github.com/didier-mycontrib/angular8plus , appli "oidc-app"
+
+
+*********************************
+NB: Arreter tous les autres serveurs en local pour éviter conflit de numero de port
+
+Exemple api-gateway "kong" et docker-compose sous vm-linux gérée via VirtualBox et vagrant
+https://github.com/didier-mycontrib/msa-vagrant
+
+(Meme exemple , partiel) pour déploiement sur cloud/iaas/gandi (vps linux_ubuntu):
+https://github.com/didier-mycontrib/msa-vps
