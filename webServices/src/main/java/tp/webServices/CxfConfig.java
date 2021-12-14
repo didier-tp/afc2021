@@ -18,7 +18,6 @@ import tp.webServices.service.CalculTva;
 @EnableAutoConfiguration
 @ImportResource({ "classpath:META-INF/cxf/cxf.xml" })
 public class CxfConfig {
-
 	@Autowired
     private ApplicationContext applicationContext;
 	
