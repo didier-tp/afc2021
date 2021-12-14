@@ -19,8 +19,10 @@ public class CalcuTvaBusinessDelegate implements CalculTva{
 						                      "CalculTvaImplService");
 		QName PORT_NAME = new QName("http://service.webServices.tp/",
 						                    "CalculTvaImplPort");
+		String serverHost ="localhost";
+		//String serverHost = "192.168.102.117";
 		// en précisant une URL WSDL connue et accessible
-		String wsdlUrl="http://localhost:8484/webServices/soap/calculTva?wsdl";
+		String wsdlUrl="http://" + serverHost + ":8484/webServices/soap/calculTva?wsdl";
 		URL wsdlDocumentLocation=null;
 		try {wsdlDocumentLocation = new URL(wsdlUrl);
 		} catch (MalformedURLException e) { e.printStackTrace();}

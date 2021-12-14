@@ -10,6 +10,7 @@ public class ClientWsSoap {
         
 		double ttc =calculTva.ttc(200.0,20.0);
 		System.out.println("ttc=" + ttc);//ttc=240 si ok
+		System.out.println("auteur=" + calculTva.getAuteur());
 	}
 
 }
