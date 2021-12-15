@@ -1,12 +1,16 @@
 package tp.webServices.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import tp.webServices.dao.DeviseDao;
 import tp.webServices.entity.Devise;
+import tp.webServices.exception.NotFoundException;
 
 @Service
 @Transactional
@@ -22,7 +26,14 @@ public class DeviseServiceImpl implements DeviseService {
 
 	@Override
 	public Devise rechercherDeviseParCode(String code) {
-		return deviseDao.findById(code).orElse(null);
+		Optional<Devise> optionalDevise = deviseDao.findById(code);
+		if(optionalDevise.isPresent()) {
+			return optionalDevise.get();
+		}else {
+			throw new NotFoundException("aucune devise existe avec le code="+code);
+			//avec @ResponseStatus(HttpStatus.NOT_FOUND) 
+			//au dessus de class NotFoundException ..{}
+		}
 	}
 
 	@Override

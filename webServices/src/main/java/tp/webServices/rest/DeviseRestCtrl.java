@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import tp.webServices.dto.MessageGenerique;
 import tp.webServices.entity.Devise;
 import tp.webServices.service.DeviseService;
 
@@ -52,10 +53,15 @@ public class DeviseRestCtrl {
 	public ResponseEntity<?> postDevise(@RequestBody Devise d){
 		   String codeDevise = d.getCode();
 		   if(deviseService.existeOuPas(codeDevise)) {
+			   /*
 			   Map<String,Object> msgErreur = new HashMap<>();
 			   msgErreur.put("message", "autre devise avec meme code dejà existante");
 			   return new ResponseEntity<Map<String,Object>>
 			                    (msgErreur, HttpStatus.CONFLICT);
+			   */
+			   return new ResponseEntity<MessageGenerique>
+                      (new MessageGenerique("autre devise avec meme code dejà existante") , 
+                       HttpStatus.CONFLICT);
 		   }else {
 		      deviseService.sauvegarderDevise(d);
 		      return new ResponseEntity<Devise>(d, HttpStatus.OK);
