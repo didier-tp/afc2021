@@ -1,18 +1,21 @@
 package tp.webServices.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@Getter @Setter @ToString 
-@NoArgsConstructor @AllArgsConstructor
+@Getter @Setter 
+@NoArgsConstructor 
 public class Devise {
 	
 	@Id
@@ -23,6 +26,26 @@ public class Devise {
     @Column(name="echange")
     private Double change; //nb unité pour 1 euro
     
+    @OneToMany(mappedBy ="devise")
+    @JsonIgnore  //un peu comme @XmlTransient
+    private List<Pays> pays;
+    
+    
 
+	public Devise(String code, String nom, Double change) {
+		super();
+		this.code = code;
+		this.nom = nom;
+		this.change = change;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Devise [code=" + code + ", nom=" + nom + ", change=" + change + "]";
+	}
+    
+    
 
 }
