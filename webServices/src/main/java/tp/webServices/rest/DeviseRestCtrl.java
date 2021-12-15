@@ -49,10 +49,17 @@ public class DeviseRestCtrl {
 	//avec { "code" : "DDK" , "nom" : "couronne danoise" , "change" : 7.77 }
 	//dans partie body de la requête entrante
 	@PostMapping(value="/private/devise" )
-	public ResponseEntity<Devise> postDevise(@RequestBody Devise d){
-		   //v1 (à beaucoup améliorer)
-		   deviseService.sauvegarderDevise(d);
-		   return new ResponseEntity<Devise>(d, HttpStatus.OK);
+	public ResponseEntity<?> postDevise(@RequestBody Devise d){
+		   String codeDevise = d.getCode();
+		   if(deviseService.existeOuPas(codeDevise)) {
+			   Map<String,Object> msgErreur = new HashMap<>();
+			   msgErreur.put("message", "autre devise avec meme code dejà existante");
+			   return new ResponseEntity<Map<String,Object>>
+			                    (msgErreur, HttpStatus.CONFLICT);
+		   }else {
+		      deviseService.sauvegarderDevise(d);
+		      return new ResponseEntity<Devise>(d, HttpStatus.OK);
+		   }
 	}
 	
 	//PUT
