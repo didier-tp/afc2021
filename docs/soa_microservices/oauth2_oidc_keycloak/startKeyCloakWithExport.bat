@@ -1,0 +1,1 @@
+standalone -Dkeycloak.migration.action=export -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=kcdump.json
