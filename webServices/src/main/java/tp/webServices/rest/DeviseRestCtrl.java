@@ -56,11 +56,11 @@ public class DeviseRestCtrl {
 	
 	//POST
 	//http://localhost:8484/webServices/devise-api/private/devise
-	//avec { "code" : "DDK" , "nom" : "couronne danoise" , "change" : 7.77 }
+	//avec { "code" : "DDK" , "name" : "couronne danoise" , "rate" : 7.77 }
 	//dans partie body de la requête entrante
 	@PostMapping(value="/private/devise" )
-	public ResponseEntity<?> postDevise(@RequestBody Devise d){
-		   String codeDevise = d.getCode();
+	public ResponseEntity<?> postDevise(@RequestBody Currency c){
+		   String codeDevise = c.getCode();
 		   if(deviseService.existeOuPas(codeDevise)) {
 			   /*
 			   Map<String,Object> msgErreur = new HashMap<>();
@@ -72,20 +72,22 @@ public class DeviseRestCtrl {
                       (new MessageGenerique("autre devise avec meme code dejà existante") , 
                        HttpStatus.CONFLICT);
 		   }else {
-		      deviseService.sauvegarderDevise(d);
-		      return new ResponseEntity<Devise>(d, HttpStatus.OK);
+		      deviseService.sauvegarderDevise(
+		    		   new Devise(c.getCode(),c.getName(),c.getRate()));
+		      return new ResponseEntity<Currency>(c, HttpStatus.OK);
 		   }
 	}
 	
 	//PUT
 	//http://localhost:8484/webServices/devise-api/private/devise
-	//avec { "code" : "DDK" , "nom" : "couronne du danemark" , "change" : 8.88 }
+	//avec { "code" : "DDK" , "name" : "couronne du danemark" , "rate" : 8.88 }
 	//dans partie body de la requête entrante
 	@PutMapping(value="/private/devise" )
-	public ResponseEntity<Devise> putDevise(@RequestBody Devise d){
+	public ResponseEntity<?> putDevise(@RequestBody Currency c){
 		   //v1 (à beaucoup améliorer)
-		   deviseService.sauvegarderDevise(d);
-		   return new ResponseEntity<Devise>(d, HttpStatus.OK);
+		   deviseService.sauvegarderDevise(
+				      new Devise(c.getCode(),c.getName(),c.getRate()));
+		   return new ResponseEntity<Currency>(c, HttpStatus.OK);
 	}
 	
 	//DELETE
