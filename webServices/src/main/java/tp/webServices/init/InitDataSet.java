@@ -3,6 +3,7 @@ package tp.webServices.init;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import tp.webServices.entity.Devise;
 import tp.webServices.service.DeviseService;
 
 @Component

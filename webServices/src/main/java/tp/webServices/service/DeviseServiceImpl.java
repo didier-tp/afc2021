@@ -22,7 +22,7 @@ public class DeviseServiceImpl implements DeviseService {
 
 	@Override
 	public Devise rechercherDeviseParCode(String code) {
-		return deviseDao.getById(code);
+		return deviseDao.findById(code).orElse(null);
 	}
 
 	@Override
