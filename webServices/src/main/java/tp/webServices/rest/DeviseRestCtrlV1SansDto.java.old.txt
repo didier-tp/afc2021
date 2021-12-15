@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tp.webServices.dto.Currency;
-import tp.webServices.dto.DtoUtil;
 import tp.webServices.dto.MessageGenerique;
 import tp.webServices.entity.Devise;
 import tp.webServices.service.DeviseService;
@@ -25,11 +22,11 @@ import tp.webServices.service.DeviseService;
 
 @RestController
 @RequestMapping(value="/devise-api" , headers="Accept=application/json")
-public class DeviseRestCtrl {
+public class DeviseRestCtrlV1SansDto {
 	
 	private DeviseService deviseService;
 
-	public DeviseRestCtrl(DeviseService deviseService) {
+	public DeviseRestCtrlV1SansDto(DeviseService deviseService) {
 		//injection de dépendance par constructeur
 		this.deviseService = deviseService;
 	}
@@ -37,21 +34,15 @@ public class DeviseRestCtrl {
 	//RECHERCHE UNIQUE selon RESOURCE-ID:
 	//http://localhost:8484/webServices/devise-api/public/devise/EUR
 	@GetMapping(value="/public/devise/{codeDevise}")
-	public Currency getDeviseByName(@PathVariable("codeDevise") String codeDevise) {
-	    Devise devise = deviseService.rechercherDeviseParCode(codeDevise);
-	    
-	    //conversion entity vers dto via constructeur
-	    return new Currency(devise.getCode(),devise.getNom(),devise.getChange());
-	    
-	    //BeanUtils.copyProperties(sourceObj, targetObj)
+	public Devise getDeviseByName(@PathVariable("codeDevise") String codeDevise) {
+	    return deviseService.rechercherDeviseParCode(codeDevise);
 	}
 	
 	//RECHERCHE MULTIPLE :
 	//http://localhost:8484/webServices/devise-api/public/devise
 	@GetMapping(value="/public/devise" )
-	public List<Currency> getDevisesByCriteria(){
-	    return DtoUtil.deviseListToCurrencyList(
-	    		deviseService.rechercherToutesDevises());
+	public List<Devise> getDevisesByCriteria(){
+	    return deviseService.rechercherToutesDevises();
 	}
 	
 	//POST
