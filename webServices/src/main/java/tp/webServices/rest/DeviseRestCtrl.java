@@ -32,13 +32,14 @@ public class DeviseRestCtrl {
 	
 	private RefreshDevise refreshDevise;//appel de WS externe pour refresh values in db
 
-	@Autowired
+	/*@Autowired*/
 	public DeviseRestCtrl(DeviseService deviseService,
 			              RefreshDevise refreshDevise) {
 		//injection de dépendance par constructeur
 		this.deviseService = deviseService;
 		this.refreshDevise=refreshDevise;
 	}
+	 
 	
 	//http://localhost:8484/webServices/devise-api/private/refresh
 	@GetMapping(value="/private/refresh")
