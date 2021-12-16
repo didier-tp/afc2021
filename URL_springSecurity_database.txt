@@ -1,0 +1,4 @@
+https://github.com/didier-mycontrib/jee-spring-app-demo
+et projet spring-boot-backend
+et src\main\java\org\mycontrib\generic\security\config\JdbcAppDbGlobalUserDetailsConfig
+
