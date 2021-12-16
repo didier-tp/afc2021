@@ -31,6 +31,15 @@ https://github.com/didier-mycontrib/jee-spring-app-demo , appli "restDeviseApiOA
 
 frontEnd angular (avec oidc) (à démarrer en dernier):
 https://github.com/didier-mycontrib/angular8plus , appli "oidc-app"
+NB: node --version 
+    npm --version
+    si besoin installer nodeJs en version récente LTS
+   -----------------
+    npm install -g @angular/cli
+   ----------
+   dans répertoire oidc-app
+   npm install (1 seule fois)
+   ng serve
 
 
 *********************************
