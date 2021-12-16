@@ -87,7 +87,7 @@ public class DeviseRestCtrl {
 		   }else {
 		      deviseService.sauvegarderDevise(
 		    		   new Devise(c.getCode(),c.getName(),c.getRate()));
-		      return new ResponseEntity<Currency>(c, HttpStatus.OK);
+		      return new ResponseEntity<Currency>(c, HttpStatus.CREATED);
 		   }
 	}
 	
@@ -97,10 +97,16 @@ public class DeviseRestCtrl {
 	//dans partie body de la requête entrante
 	@PutMapping(value="/private/devise" )
 	public ResponseEntity<?> putDevise(@RequestBody Currency c){
-		   //v1 (à beaucoup améliorer)
-		   deviseService.sauvegarderDevise(
-				      new Devise(c.getCode(),c.getName(),c.getRate()));
-		   return new ResponseEntity<Currency>(c, HttpStatus.OK);
+		 String codeDevise = c.getCode();
+		   if(deviseService.existeOuPas(codeDevise)) {		
+			   deviseService.sauvegarderDevise(
+					      new Devise(c.getCode(),c.getName(),c.getRate()));
+			   return new ResponseEntity<Currency>(c, HttpStatus.OK);
+		   }else {
+			  return new ResponseEntity<MessageGenerique>
+               (new MessageGenerique("pas de devise existante a mettre a jour","pour code="+codeDevise) , 
+                HttpStatus.NOT_FOUND);		   
+		   }
 	}
 	
 	//DELETE
@@ -108,11 +114,16 @@ public class DeviseRestCtrl {
 	@DeleteMapping(value="/private/devise/{codeDevise}" )
 	public ResponseEntity<?> deleteDevise(
 			     @PathVariable("codeDevise") String codeDevise){
-		   //v1 (à beaucoup améliorer)
-		   this.deviseService.supprimerDeviseParCode(codeDevise);
-		   Map<String,Object> msgOk = new HashMap<>();
-		   msgOk.put("message", "suppression bien effectuee");
-		   return new ResponseEntity<Map<String,Object>>(msgOk, HttpStatus.OK);
+		   if(deviseService.existeOuPas(codeDevise)) {
+			   this.deviseService.supprimerDeviseParCode(codeDevise);
+			   Map<String,Object> msgOk = new HashMap<>();
+			   msgOk.put("message", "suppression bien effectuee");
+			   return new ResponseEntity<Map<String,Object>>(msgOk, HttpStatus.OK);
+		   }else {
+				  return new ResponseEntity<MessageGenerique>
+	               (new MessageGenerique("pas de devise existante a supprimer","pour code="+codeDevise) , 
+	                HttpStatus.NOT_FOUND);		   
+			   }	   
 	}
 	
 	
