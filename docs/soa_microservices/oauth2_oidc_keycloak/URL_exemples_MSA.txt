@@ -41,6 +41,10 @@ NB: node --version
    npm install (1 seule fois)
    ng serve
 
+si autre que 8989,
+coté angular oidc-app/src/app/common/service/session.service.ts à ajuster
+coté spring restDeviseApiOAuth2/src/main/resources/application.yml
+
 
 *********************************
 NB: Arreter tous les autres serveurs en local pour éviter conflit de numero de port
