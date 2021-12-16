@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import tp.webServices.delegate.RefreshDevise;
 import tp.webServices.dto.Currency;
 import tp.webServices.dto.DtoUtil;
 import tp.webServices.dto.MessageGenerique;
@@ -28,10 +29,22 @@ import tp.webServices.service.DeviseService;
 public class DeviseRestCtrl {
 	
 	private DeviseService deviseService;
+	
+	private RefreshDevise refreshDevise;//appel de WS externe pour refresh values in db
 
-	public DeviseRestCtrl(DeviseService deviseService) {
+	@Autowired
+	public DeviseRestCtrl(DeviseService deviseService,
+			              RefreshDevise refreshDevise) {
 		//injection de dépendance par constructeur
 		this.deviseService = deviseService;
+		this.refreshDevise=refreshDevise;
+	}
+	
+	//http://localhost:8484/webServices/devise-api/private/refresh
+	@GetMapping(value="/private/refresh")
+	public MessageGenerique refreshValues() {
+		List<Devise> devises = this.refreshDevise.refreshDeviseValuesInDataBase();
+		return new MessageGenerique("refresh ok",devises.toString());
 	}
 	
 	//RECHERCHE UNIQUE selon RESOURCE-ID:
