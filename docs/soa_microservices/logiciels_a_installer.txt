@@ -2,8 +2,12 @@ logiciels à installer (sur le pc) d'ici jeudi/vendredi:
 ==================================
 keycloak (serveur oauth2/oidc)
 nodejs en version récente LTS et sa sous partie npm (pour lancer application angular)
-virtualbox (pour faire fonctionner linux sous windows)
-vagrant (pour configurer et démmarrer facilement virtualbox et linux en mode texte)
+==========================
+
+1. virtualbox (pour faire fonctionner linux sous windows)
+2. vagrant (pour configurer et démmarrer facilement virtualbox et linux en mode texte)
+3. https://github.com/didier-mycontrib/msa-vagrant (à récupérer via git clone)
+   et projet va-sta-msa-kong et lancer script vagant-up-cmd.bat
 
 
 Puis via vagrant/linux,
