@@ -1,0 +1,6 @@
+téléTravail dès le 21/12/2021 pour tous .
+==============================
+WSL2 = Windows Subsystem for linux (en cous d'intégration sous windows 10 et windows 11)
+et donc vagrant sera facultatif (pas indispensable dans les cas simples).
+========
+vagrant et virtualBox encore utiles pour simuler cluster d'ordinateurs (ex: pour kubernetes).
